@@ -168,7 +168,7 @@ def Train():
     # Loss function
     Mean_Loss = []
     # Dictionary of the dataset for training
-    train_set = {'a': "fig8_data_for_training.csv"}   # selected from "merged_2021-02-23-14-41-07_seg_3.csv"   
+    train_set = {'a': "fig8_data_for_training.csv"}   # selected from "merged_2021-02-23-14-41-07_seg_3.csv" the velocity is integrated from the acceleration in the dataset  
     
     # number of trained episode
     n_ep = 1
@@ -389,7 +389,9 @@ def Evaluate():
     tx_mhe, ty_mhe, tz_mhe = [], [], []
     # Estimation error sequence list
     Efx, Efy, Efz, Etx, Ety, Etz = [], [], [], [], [], []
-    evaluate_set = {'a':"fig8_evaluation_data_sameas_neurobem.csv"} # selected from "merged_2021-02-23-17-27-24_seg_2.csv"
+    # evaluate_set = {'a':"fig8_evaluation_data_sameas_neurobem.csv"} # selected from "merged_2021-02-23-17-27-24_seg_2.csv" the velocity is integrated from the acceleration in the dataset
+    # evaluate_set = {'b':"race_traj_evaluation_dataset.csv"} # race trajectory selected from "merged_2021-02-05-15-40-15_seg_1"
+    evaluate_set = {'c':"random_traj_evaluation_dataset.csv"} # random trajectory selected from "merged_2021-02-23-19-04-50_seg_2"
     # count of step in all evaluations
     step = 0
     # Sum of loss
@@ -456,7 +458,7 @@ def Evaluate():
         w_B0 = np.array([[angvelx_seq[0], angvely_seq[0], angvelz_seq[0]]]).T
         R_Bh0, R_B0 = Quaternion2Rotation(q0)  # 9-by-1
         v_I0 = np.matmul(R_B0, v_B0)#+ np.matmul(np.matmul(R_B0, skew_w), r_I0)
-        state0 = np.vstack((r_I0, v_B0, R_Bh0, w_B0))
+        state0 = np.vstack((r_I0, v_I0, R_Bh0, w_B0))
         acc = np.array([[accx_seq[0], accy_seq[0], accz_seq[0], angaccx_seq[0], angaccy_seq[0], angaccz_seq[0]]]).T
         control = np.array([[mot1_seq[0] ** 2, mot2_seq[0] ** 2, mot3_seq[0] ** 2,
                               mot4_seq[0] ** 2]]).T  # Update control after the MHE is solved
@@ -490,8 +492,8 @@ def Evaluate():
             wx+= [w_B[0, 0]]
             R11 += [R_B[0, 0]]
             v_I = np.matmul(R_B, v_B)# + np.matmul(np.matmul(R_B, skew_w), r_I0)
-            vx += [v_B[0, 0]]
-            state = np.vstack((r_I, v_B, R_Bh, w_B)) 
+            vx += [v_I[0, 0]]
+            state = np.vstack((r_I, v_I, R_Bh, w_B)) 
             Y += [state]
             input_nn_QR = state # based on current measurement and speed
             tunable_para = convert(model_QR(input_nn_QR))
