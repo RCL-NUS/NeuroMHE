@@ -1,1 +1,1 @@
-rmse_pxy= 0.104 rmse_pz= 0.039 rmse_p= 0.037 rmse_fxy= 0.370 rmse_fz= 1.139 rmse_f= 1.136
+rmse_pxy= 0.094 pxy_max= 0.174 estrmse_pz= 0.414 ez_max= 0.103 rmse_fxy= 0.385 rmse_fz= 1.086 std= 0.023
