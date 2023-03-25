@@ -1,0 +1,2 @@
+rmse_px= 0.1241 rmse_py= 0.0853 rmse_pz= 0.1330 rmse_p= 0.1314
+rmse_fx= 0.7968 rmse_fy= 0.8233 rmse_fz= 2.7246 rmse_f= 2.3194
