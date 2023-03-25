@@ -55,7 +55,12 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
      https://user-images.githubusercontent.com/70559054/227720768-c70ea330-114e-4058-aea6-619bbdc3f379.mp4
      
 ### SecVII-C
-1. Run 
+1. Run the **main_code.py** python file in the **Training in simulation** folder within the downloaded **SecVII-C (source code)** folder.
+2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
+* Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
+* Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 4 controllers, as shown below.
+
+     ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227721390-17b9d275-23e2-4506-9bd3-c829363c981a.png)    
 
 
 
