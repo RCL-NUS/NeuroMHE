@@ -66,6 +66,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 
       https://user-images.githubusercontent.com/70559054/227721900-338651dc-ce40-4288-ae8a-844ab37c50c1.mp4
 
+Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is avaiable at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907.
 
 ## 4. Contact Us
 Should you have encountered a bug in your implementation of the code, please feel free to let me know.
