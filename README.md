@@ -33,6 +33,14 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 ### SecVII-A
 1. Download **processed_data.zip** and **predictions.tat.xz** from https://download.ifi.uzh.ch/rpg/NeuroBEM/. The former file is utilized for training NeuroMHE, whereas the latter serves the purpose of evaluation and comparison with NeuroBEM.
 2. Relocate the **bem+nn** folder from the decomprassed **predictions.tat.xz** archive to the downloaded **SecVII-A (source code)** folder, and place the decompressed **processed_data.zip** within the **SecVII-A (source code)** folder as well.
+3. Run the python file **main_code_supervisedlearning.py**. 
+4. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
+* Training: type 'train' without the quotation mark in the terminal.
+* Evaluation: type 'evaluation' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation (there are a total of 13 agile trajectories within the complete NeuroBEM test dataset). 
+
+
+
+![NeuroBEM test dataset](https://user-images.githubusercontent.com/70559054/227719146-8e29a75b-7619-46a9-92e1-00718121ec9f.png)
 
 
 
