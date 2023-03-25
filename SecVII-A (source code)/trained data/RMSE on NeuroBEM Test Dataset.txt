@@ -1,0 +1,146 @@
+
+
+# traj a
+mean_loss_ev= [2.07179308]
+rmse_fx_bemnn= 0.224 rmse_fy_bemnn= 0.236 rmse_fz_bemnn= 0.152
+rmse_fx= 0.271 rmse_fy= 0.283 rmse_fz= 0.124
+rmse_tx_bemnn= 0.005 rmse_ty_bemnn= 0.006 rmse_tz_bemnn= 0.003
+rmse_tx= 0.005 rmse_ty= 0.003 rmse_tz= 0.003
+rmse_fxy_bemnn= 0.192 rmse_txy_bemnn= 0.006
+rmse_fxy= 0.091 rmse_txy= 0.004
+rmse_f_bemnn= 0.216 rmse_t_bemnn= 0.005
+rmse_f= 0.095 rmse_t= 0.004
+
+# traj b
+mean_loss_ev= [0.67046744]
+rmse_fx_bemnn= 0.289 rmse_fy_bemnn= 0.286 rmse_fz_bemnn= 0.322
+rmse_fx= 0.192 rmse_fy= 0.196 rmse_fz= 0.153
+rmse_tx_bemnn= 0.013 rmse_ty_bemnn= 0.011 rmse_tz_bemnn= 0.006
+rmse_tx= 0.014 rmse_ty= 0.008 rmse_tz= 0.006
+rmse_fxy_bemnn= 0.390 rmse_txy_bemnn= 0.012
+rmse_fxy= 0.266 rmse_txy= 0.012
+rmse_f_bemnn= 0.453 rmse_t_bemnn= 0.012
+rmse_f= 0.229 rmse_t= 0.012
+
+# traj c
+mean_loss_ev= [0.07837701]
+rmse_fx_bemnn= 0.074 rmse_fy_bemnn= 0.101 rmse_fz_bemnn= 0.217
+rmse_fx= 0.042 rmse_fy= 0.071 rmse_fz= 0.043
+rmse_tx_bemnn= 0.004 rmse_ty_bemnn= 0.003 rmse_tz_bemnn= 0.002
+rmse_tx= 0.003 rmse_ty= 0.001 rmse_tz= 0.003
+rmse_fxy_bemnn= 0.111 rmse_txy_bemnn= 0.004
+rmse_fxy= 0.060 rmse_txy= 0.002
+rmse_f_bemnn= 0.236 rmse_t_bemnn= 0.004
+rmse_f= 0.045 rmse_t= 0.002
+
+# traj d
+mean_loss_ev= [0.47573358]
+rmse_fx_bemnn= 0.286 rmse_fy_bemnn= 0.261 rmse_fz_bemnn= 0.343
+rmse_fx= 0.113 rmse_fy= 0.153 rmse_fz= 0.185
+rmse_tx_bemnn= 0.009 rmse_ty_bemnn= 0.009 rmse_tz_bemnn= 0.004
+rmse_tx= 0.011 rmse_ty= 0.007 rmse_tz= 0.004
+rmse_fxy_bemnn= 0.354 rmse_txy_bemnn= 0.009
+rmse_fxy= 0.130 rmse_txy= 0.012
+rmse_f_bemnn= 0.464 rmse_t_bemnn= 0.009
+rmse_f= 0.152 rmse_t= 0.011
+
+# traj e
+mean_loss_ev= [1.33450309]
+rmse_fx_bemnn= 0.407 rmse_fy_bemnn= 0.374 rmse_fz_bemnn= 0.359
+rmse_fx= 0.194 rmse_fy= 0.296 rmse_fz= 0.310
+rmse_tx_bemnn= 0.014 rmse_ty_bemnn= 0.012 rmse_tz_bemnn= 0.007
+rmse_tx= 0.016 rmse_ty= 0.011 rmse_tz= 0.005
+rmse_fxy_bemnn= 0.493 rmse_txy_bemnn= 0.013
+rmse_fxy= 0.210 rmse_txy= 0.016
+rmse_f_bemnn= 0.552 rmse_t_bemnn= 0.013
+rmse_f= 0.247 rmse_t= 0.016
+
+# traj f
+mean_loss_ev= [0.43408742]
+rmse_fx_bemnn= 0.308 rmse_fy_bemnn= 0.299 rmse_fz_bemnn= 0.254
+rmse_fx= 0.156 rmse_fy= 0.200 rmse_fz= 0.098
+rmse_tx_bemnn= 0.006 rmse_ty_bemnn= 0.009 rmse_tz_bemnn= 0.004
+rmse_tx= 0.005 rmse_ty= 0.003 rmse_tz= 0.003
+rmse_fxy_bemnn= 0.411 rmse_txy_bemnn= 0.007
+rmse_fxy= 0.052 rmse_txy= 0.004
+rmse_f_bemnn= 0.470 rmse_t_bemnn= 0.007
+rmse_f= 0.076 rmse_t= 0.004
+
+# traj g
+mean_loss_ev= [0.05728424]
+rmse_fx_bemnn= 0.051 rmse_fy_bemnn= 0.052 rmse_fz_bemnn= 0.337
+rmse_fx= 0.021 rmse_fy= 0.058 rmse_fz= 0.031
+rmse_tx_bemnn= 0.002 rmse_ty_bemnn= 0.002 rmse_tz_bemnn= 0.002
+rmse_tx= 0.002 rmse_ty= 0.001 rmse_tz= 0.002
+rmse_fxy_bemnn= 0.059 rmse_txy_bemnn= 0.002
+rmse_fxy= 0.051 rmse_txy= 0.002
+rmse_f_bemnn= 0.340 rmse_t_bemnn= 0.002
+rmse_f= 0.031 rmse_t= 0.002
+
+# traj h
+mean_loss_ev= [0.18126781]
+rmse_fx_bemnn= 0.185 rmse_fy_bemnn= 0.185 rmse_fz_bemnn= 0.333
+rmse_fx= 0.065 rmse_fy= 0.094 rmse_fz= 0.096
+rmse_tx_bemnn= 0.004 rmse_ty_bemnn= 0.005 rmse_tz_bemnn= 0.003
+rmse_tx= 0.004 rmse_ty= 0.002 rmse_tz= 0.003
+rmse_fxy_bemnn= 0.234 rmse_txy_bemnn= 0.004
+rmse_fxy= 0.068 rmse_txy= 0.003
+rmse_f_bemnn= 0.397 rmse_t_bemnn= 0.004
+rmse_f= 0.092 rmse_t= 0.003
+
+# traj i
+mean_loss_ev= [0.61944107]
+rmse_fx_bemnn= 0.252 rmse_fy_bemnn= 0.437 rmse_fz_bemnn= 0.369
+rmse_fx= 0.108 rmse_fy= 0.275 rmse_fz= 0.116
+rmse_tx_bemnn= 0.010 rmse_ty_bemnn= 0.012 rmse_tz_bemnn= 0.006
+rmse_tx= 0.013 rmse_ty= 0.007 rmse_tz= 0.005
+rmse_fxy_bemnn= 0.477 rmse_txy_bemnn= 0.010
+rmse_fxy= 0.259 rmse_txy= 0.012
+rmse_f_bemnn= 0.582 rmse_t_bemnn= 0.010
+rmse_f= 0.193 rmse_t= 0.012
+
+# traj j
+mean_loss_ev= [1.41084623]
+rmse_fx_bemnn= 0.493 rmse_fy_bemnn= 0.967 rmse_fz_bemnn= 0.504
+rmse_fx= 0.128 rmse_fy= 0.416 rmse_fz= 0.223
+rmse_tx_bemnn= 0.020 rmse_ty_bemnn= 0.018 rmse_tz_bemnn= 0.009
+rmse_tx= 0.019 rmse_ty= 0.013 rmse_tz= 0.007
+rmse_fxy_bemnn= 1.042 rmse_txy_bemnn= 0.020
+rmse_fxy= 0.399 rmse_txy= 0.019
+rmse_f_bemnn= 1.089 rmse_t_bemnn= 0.019
+rmse_f= 0.318 rmse_t= 0.018
+
+# traj k
+mean_loss_ev= [1.26199559]
+rmse_fx_bemnn= 0.615 rmse_fy_bemnn= 0.544 rmse_fz_bemnn= 0.523
+rmse_fx= 0.274 rmse_fy= 0.293 rmse_fz= 0.225
+rmse_tx_bemnn= 0.009 rmse_ty_bemnn= 0.012 rmse_tz_bemnn= 0.006
+rmse_tx= 0.006 rmse_ty= 0.003 rmse_tz= 0.004
+rmse_fxy_bemnn= 0.788 rmse_txy_bemnn= 0.010
+rmse_fxy= 0.160 rmse_txy= 0.005
+rmse_f_bemnn= 0.926 rmse_t_bemnn= 0.011
+rmse_f= 0.110 rmse_t= 0.005
+
+# traj l
+mean_loss_ev= [0.84634499]
+rmse_fx_bemnn= 0.184 rmse_fy_bemnn= 0.311 rmse_fz_bemnn= 0.388
+rmse_fx= 0.102 rmse_fy= 0.312 rmse_fz= 0.180
+rmse_tx_bemnn= 0.008 rmse_ty_bemnn= 0.008 rmse_tz_bemnn= 0.005
+rmse_tx= 0.015 rmse_ty= 0.009 rmse_tz= 0.004
+rmse_fxy_bemnn= 0.326 rmse_txy_bemnn= 0.009
+rmse_fxy= 0.285 rmse_txy= 0.015
+rmse_f_bemnn= 0.473 rmse_t_bemnn= 0.009
+rmse_f= 0.278 rmse_t= 0.015
+
+# traj m
+mean_loss_ev= [0.71373151]
+rmse_fx_bemnn= 0.811 rmse_fy_bemnn= 0.637 rmse_fz_bemnn= 0.397
+rmse_fx= 0.235 rmse_fy= 0.241 rmse_fz= 0.081
+rmse_tx_bemnn= 0.012 rmse_ty_bemnn= 0.018 rmse_tz_bemnn= 0.008
+rmse_tx= 0.006 rmse_ty= 0.004 rmse_tz= 0.005
+rmse_fxy_bemnn= 1.004 rmse_txy_bemnn= 0.017
+rmse_fxy= 0.097 rmse_txy= 0.005
+rmse_f_bemnn= 1.065 rmse_t_bemnn= 0.018
+rmse_f= 0.098 rmse_t= 0.005
+
+
