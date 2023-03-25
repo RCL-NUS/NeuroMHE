@@ -463,10 +463,10 @@ def Evaluate():
     print("'c': L1 Adaptive Control + Geometric Controller")
     print("'d': L1-AC (active)      + Geometric Controller")
     print("'e': Baseline Geometric Controller Alone")
-    controller = 'a'#input("enter 'a', or 'b',... without the quotation mark:")
+    controller = input("enter 'a', or 'b',... without the quotation mark:")
     print("===============================================")
     print("Plot figures?")
-    plot = 'y' #input("enter 'y', or 'n',... without the quotation mark:")
+    plot = input("enter 'y', or 'n',... without the quotation mark:")
 
     # Total simulation time
     T_end  = 10
