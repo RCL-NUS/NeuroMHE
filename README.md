@@ -60,11 +60,17 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
 * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 4 controllers, as shown below.
 
-     ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227721390-17b9d275-23e2-4506-9bd3-c829363c981a.png)    
+     ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227721390-17b9d275-23e2-4506-9bd3-c829363c981a.png)
 
+3. Run the **T-RO-experiment-data-processing_22_Feb.py** python file located in the **SecVII-C (source code)/Evaluation in real-world experiment/Experiment Raw Data** directory to generate the figures depicting the experimental results. A video demonstration showcasing the experiments is presented below.
+
+      https://user-images.githubusercontent.com/70559054/227721900-338651dc-ce40-4288-ae8a-844ab37c50c1.mp4
 
 
 ## 4. Contact Us
+Should you have encountered a bug in your implementation of the code, please feel free to let me know.
+* Name: Mr. Bingheng Wang
+* Email: wangbingheng@u.nus.edu
 
 ## References
 <a id="1">[1]</a> 
