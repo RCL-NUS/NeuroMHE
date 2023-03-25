@@ -8,7 +8,6 @@ Should you have any question, please feel free to contact the author via:
 wangbingheng@u.nus.edu
 """
 
-from curses.ascii import ctrl
 from casadi import *
 from numpy import linalg as LA
 import numpy as np
