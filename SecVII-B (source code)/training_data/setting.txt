@@ -1,0 +1,13 @@
+ctrl_gain = np.array([[25,25,25, 15,15,15, 15,15,15, 1.5,1.5,1.5]]) 
+
+dpara = np.array([2,1,1, 2,1,1, 2,1,1, 0.1,0.1,0.1, 0.1,0.1,0.1, 0.1,0.1,0.1]) 
+
+euler_max = 70
+    # kf      = 1
+    # k    = 0
+    # fx_max = 0
+    # fy_max = 0
+    # while df_z > -10 or dfz_min>-20 or dfz_last < -16 or euler_max>35 or k<1200 or fx_max<8 or fy_max<8:
+    #     df_z, dfz_min, dfz_last, euler_max, k, fx_max, fy_max = Evaluate()
+    #     print('kf=',kf,'df_z=',df_z,'dfz_min=',dfz_min,'dfz_last=',dfz_last,'euler_max=',euler_max,'fx_max=',fx_max,'fy_max=',fy_max)
+    #     kf += 1
