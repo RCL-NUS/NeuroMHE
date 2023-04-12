@@ -69,7 +69,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907.
 
 ## 4. Contact Us
-Should you have encountered a bug in your implementation of the code, please feel free to let me know.
+If you encounter a bug in your implementation of the code, please do not hesitate to inform me.
 * Name: Mr. Bingheng Wang
 * Email: wangbingheng@u.nus.edu
 
