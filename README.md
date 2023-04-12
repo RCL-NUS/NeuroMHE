@@ -46,7 +46,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 1. Run the **main_code.py** python file in the downloaded **SecVII-B (source code)** folder.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
 * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
-* Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 5 controllers, as shown below.
+* Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 5 controllers, as shown below. Note again that, like the case in SecVII-A, you can also skip the training process and directly evaluate the performance using the trained network model **trained_nn_model.pt** that is saved in the **trained_data** folder within the downloaded **SecVII-B (source code)** folder.
 
      ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227720537-e2910ce5-7128-4bed-864b-848c787a7413.png)
      
