@@ -41,6 +41,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. Note that you can skip the training process and directly evaluate the performance using the trained network model **Trained_model.pt** that is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
 
      ![NeuroBEM test dataset](https://user-images.githubusercontent.com/70559054/227719146-8e29a75b-7619-46a9-92e1-00718121ec9f.png)
+5. The above training relies on a 10-second segment from a figure-8 flight trajectory, encompassing a broad velocity range of 0.05 m/s to 16.38 m/s. Consequently, this segment is referred to as the 'fast training set'. One advantage of NeuroBEM is that its accuracy declines by merely 20% when the training dataset encompasses a limited portion of the velocity-range space in comparison to the test dataset. To show how our NeuroMHE performs in this case, we 
 
 ### SecVII-B
 1. Run the **main_code.py** python file in the downloaded **SecVII-B (source code)** folder.
