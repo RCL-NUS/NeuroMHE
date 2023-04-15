@@ -384,10 +384,10 @@ class KF_gradient_solver:
         self.xa     = xa
         self.dismhe = vertcat(self.xa[3:6,0], self.xa[9:12,0]) 
         self.est_e  = self.dismhe - self.x_t
-        w_f, w_t    = 1, 10
+        w_f, w_t    = 1, 10 # 1, 5 for the slow training set
         weight      = np.array([w_f, w_f, w_f, w_t, w_t, w_t])
         self.loss   = mtimes(mtimes(transpose(self.est_e), np.diag(weight)), self.est_e)
-        self.Kloss  = 1.25
+        self.Kloss  = 1.25 # 10 for the slow training set
     
     def q_2_rotation(self,q): # from body frame to inertial frame
         q = q/norm_2(q) # normalization
