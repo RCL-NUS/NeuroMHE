@@ -42,9 +42,19 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 
      ![NeuroBEM test dataset](https://user-images.githubusercontent.com/70559054/227719146-8e29a75b-7619-46a9-92e1-00718121ec9f.png)
      
-5. The above training relies on a 10-second segment from a figure-8 flight trajectory, as used in the paper. It encompasses a broad velocity range of 0.05 m/s to 16.38 m/s. Consequently, this segment is referred to as the 'fast training set'. One advantage of NeuroBEM is that its accuracy declines by merely 20% when the training dataset encompasses a limited portion of the velocity-range space in comparison to the test dataset. To show how our NeuroMHE performs in this case, we select another 10-second segment from a relatively slow wobbly circle trajectory, which only encompasses a limited velocity range of 0.19 m/s to 5.18 m/s. This slow segemnt is referred to as the 'slow training set'. The following two figures present a comparison of the velocity-range space between the training sets and the partial test set.
+The above training relies on a 10-second segment from a figure-8 flight trajectory, as used in the paper. It encompasses a broad velocity range of 0.05 m/s to 16.38 m/s. Consequently, this segment is referred to as the 'fast training set'. One advantage of NeuroBEM is that its accuracy declines by merely 20% when the training dataset encompasses a limited portion of the velocity-range space in comparison to the test dataset. To show how our NeuroMHE performs in this case, we select another 10-second segment from a relatively slow wobbly circle trajectory, which only encompasses a limited velocity range of 0.19 m/s to 5.18 m/s. This slow segemnt is referred to as the 'slow training set'. The following two figures present a comparison of the velocity-range space between the training sets and the partial test set.
 
 ![comparison_velocity_space](https://user-images.githubusercontent.com/70559054/232182162-9247d3f6-6ef9-4e05-862e-e490ecc867d2.png)
+
+We evaluate the performance of NeuroMHE, trained on the 'slow training set', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in the following table where the NeuroMHE rained on the 'slow training set' is marked with an asterisk.
+
+![RMSE_slow_trainingset](https://user-images.githubusercontent.com/70559054/232182339-4da2c441-364a-47fe-bcb9-474a9739c0f0.png)
+
+Remarkably, NeuroMHE demonstrates a performance comparable to that of its counterpart trained on the 'fast training set.' Furthermore, it exhibits a slightly improved performance, with reductions in overall force estimation error reaching up to 92.5%. This promising outcome underscores the exceptional robustness of our approach with respect to the training dataset.
+
+5. To train NeuroMHE on the 'slow training set', update the **train_set** in line 148 of the **main_code_supervisedlearning.py** python file by replacing **merged_2021-02-23-14-41-07_seg_3.csv** with **merged_2021-02-03-13-44-49_seg_3.csv**. You can also directly reproduce the results in the above table using the trained network model (i.e., **Trained_model_slow.pt**) that is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
+
+
 
 
 ### SecVII-B
