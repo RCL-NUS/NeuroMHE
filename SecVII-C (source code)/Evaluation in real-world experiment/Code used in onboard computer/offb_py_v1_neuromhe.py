@@ -612,7 +612,7 @@ if __name__ == '__main__':
             # Position control
             if time > 1: # let the drone take off first so that there is no supporting force from the ground
                 factor = 1
-            Fd, fd     = GeoCtrl.position_ctrl(y_p,R_b, ref_p,ref_v,ref_a,factor*df_I) # lower sampling rate and larger scalefactor can allow a larger factor!
+            Fd, fd     = GeoCtrl.position_ctrl(y_p,R_b, ref_p,ref_v,ref_a,factor*df_I) 
 
             f = fd # feed the control command directly to the MHE estimator
             #-----------control force normalization (required by the PX4 lower-level controller)------------#
