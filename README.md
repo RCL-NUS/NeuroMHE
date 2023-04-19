@@ -35,7 +35,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 ### SecVII-A
 1. Download **processed_data.zip** and **predictions.tat.xz** from https://download.ifi.uzh.ch/rpg/NeuroBEM/. The former file is utilized for training NeuroMHE, whereas the latter serves the purpose of evaluation and comparison with NeuroBEM.
 2. Relocate the **bem+nn** folder from the decomprassed **predictions.tat.xz** archive to the downloaded **SecVII-A (source code)** folder, and place the decompressed **processed_data.zip** within the **SecVII-A (source code)** folder as well.
-3. Run the **main_code_supervisedlearning.py** python file. 
+3. Run the **main_code_supervisedlearning.py** Python file. 
 4. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
 * Training: type 'train' without the quotation mark in the terminal.
 * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. Note that you can skip the training process and directly evaluate the performance using the trained network model **Trained_model.pt** that is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
@@ -52,13 +52,13 @@ We evaluate the performance of NeuroMHE, trained on the 'slow training set', in 
 
 Remarkably, NeuroMHE demonstrates a performance comparable to that of its counterpart trained on the 'fast training set.' Furthermore, it exhibits a slightly improved performance, with reductions in overall force estimation error reaching up to 92.5%. This promising outcome underscores the exceptional robustness of our approach with respect to the training dataset.
 
-5. To train NeuroMHE on the 'slow training set', update the **train_set** in line 148 of the **main_code_supervisedlearning.py** python file by replacing **merged_2021-02-23-14-41-07_seg_3.csv** with **merged_2021-02-03-13-44-49_seg_3.csv**. You can also directly reproduce the results in the above table using the trained network model (i.e., **Trained_model_slow.pt**) that is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
+5. To train NeuroMHE on the 'slow training set', update the **train_set** in line 148 of the **main_code_supervisedlearning.py** Python file by replacing **merged_2021-02-23-14-41-07_seg_3.csv** with **merged_2021-02-03-13-44-49_seg_3.csv**. You can also directly reproduce the results in the above table using the trained network model (i.e., **Trained_model_slow.pt**) that is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
 
 
 
 
 ### SecVII-B
-1. Run the **main_code.py** python file in the downloaded **SecVII-B (source code)** folder.
+1. Run the **main_code.py** Python file in the downloaded **SecVII-B (source code)** folder.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
 * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
 * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 5 controllers, as shown below. Note again that, like the case in SecVII-A, you can also skip the training process and directly evaluate the performance using the trained network model **trained_nn_model.pt** that is saved in the **trained_data** folder within the downloaded **SecVII-B (source code)** folder.
@@ -70,18 +70,18 @@ Remarkably, NeuroMHE demonstrates a performance comparable to that of its counte
      https://user-images.githubusercontent.com/70559054/227720768-c70ea330-114e-4058-aea6-619bbdc3f379.mp4
      
 ### SecVII-C
-1. Run the **main_code.py** python file in the **Training in simulation** folder within the downloaded **SecVII-C (source code)** folder.
+1. Run the **main_code.py** Python file in the **Training in simulation** folder within the downloaded **SecVII-C (source code)** folder.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
 * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
 * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 4 controllers, as shown below.
 
      ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227721390-17b9d275-23e2-4506-9bd3-c829363c981a.png)
 
-3. Run the **T-RO-experiment-data-processing_22_Feb.py** python file located in the **SecVII-C (source code)/Evaluation in real-world experiment/Experiment Raw Data** directory to generate the figures depicting the experimental results. A video demonstration showcasing the experiments is presented below.
+3. Run the **T-RO-experiment-data-processing_22_Feb.py** Python file located in the **SecVII-C (source code)/Evaluation in real-world experiment/Experiment Raw Data** directory to generate the figures depicting the experimental results. A video demonstration showcasing the experiments is presented below.
 
       https://user-images.githubusercontent.com/70559054/227721900-338651dc-ce40-4288-ae8a-844ab37c50c1.mp4
       
-Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907. The main code that runs our method and other start-of-the-art robust flight controllers in the onboard computer can be found in the **offb_py_v1_neuromhe.py** python file (line 503~659) in the **Code used in onboard computer** folder within the downloaded **SecVII-C (source code)** folder.
+Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907. The primary code implementing our method, along with other state-of-the-art robust flight controllers, is located in the **offb_py_v1_neuromhe.py** Python file (lines 504-659). This file can be found in the **SecVII-C (source code)/Evaluation in real-world experiment/Code used in onboard computer** directory.
 
 ## 4. Contact Us
 If you encounter a bug in your implementation of the code, please do not hesitate to inform me.
