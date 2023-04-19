@@ -21,7 +21,7 @@ from matplotlib import rc
 
 """--------------Load data----------------"""
 # NeuroBEM data ('2021-02-18-18-08-45_seg_1' 3D circle trajectory)
-# NeuroBEM data ('2021-02-23-17-27-24_seg_2' 3D circle trajectory)
+# NeuroBEM data ('2021-02-23-17-27-24_seg_2' Figure-8 trajectory)
 Bemnn_fxy = np.load('trained_data/Bemnn_fxy_f.npy')
 Bemnn_fz  = np.load('trained_data/Bemnn_fz_f.npy')
 Bemnn_txy = np.load('trained_data/Bemnn_txy_f.npy')
