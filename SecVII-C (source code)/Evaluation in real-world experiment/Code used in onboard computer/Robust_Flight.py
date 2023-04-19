@@ -71,7 +71,7 @@ class Controller:
         # Trajectory tracking errors
         ep = p - ref_p
         ev = v - ref_v
-        # Desired force in inertial frame for the norminal dynamics
+        # Desired force in inertial frame with the compensation df_Imh
         Fd = -np.matmul(self.kp, ep) - np.matmul(self.kv, ev) + self.m*self.g*self.ez + self.m*ref_a -df_Imh
         # Desired total thruster force fd
         fd = np.inner(Fd.T, np.transpose(np.matmul(Rb, self.ez)))
