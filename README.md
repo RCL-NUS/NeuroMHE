@@ -14,9 +14,9 @@ The project consists of three folders, which correspond to the three experiments
 2. A stable NeuroMHE with a fast dynamic response can be trained directly from the trajectory tracking error using Algorithm 2 (i.e., the model-based policy gradient algorithm) .
 3. NeuroMHE exhibits superior estimation and robust control performance than a fixed-weighting MHE (DMHE) [[2]](#2) and a state-of-the-art adaptive controller [[3]](#3) for handling dynamic noise covariances.
 4. Finally, NeuroMHE is efficiently transferable to different challenging flight scenarios on a real quadrotor without extra parameter tuning, such as counteracting state-dependent cable forces and flying under the downwash flow.
-* SecVII-A (source code): A comprehensive comparison with the state-of-the-art NeuroBEM estimator on its real agile test dataset to show the first feature. 
-* SecVII-B (source code): A robust trajectory tracking control scenario in simulation to show the second and third features.
-* SecVII-C (source code): Physical experiments on a real quadrotor to show the fourth feature.
+* SecVII-A (source code): *A comprehensive comparison with the state-of-the-art NeuroBEM estimator* on its real agile test dataset to show the first feature. 
+* SecVII-B (source code): *A robust trajectory tracking control scenario in simulation* to show the second and third features.
+* SecVII-C (source code): *Physical experiments on a real quadrotor* to show the fourth feature.
 
 ## 2. Dependency Packages
 Please make sure that the following packages have already been installed before running the source code.
