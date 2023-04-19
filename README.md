@@ -81,7 +81,7 @@ Remarkably, NeuroMHE demonstrates a performance comparable to that of its counte
 
       https://user-images.githubusercontent.com/70559054/227721900-338651dc-ce40-4288-ae8a-844ab37c50c1.mp4
       
-Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907. The primary code implementing our method in the onboard compute, along with other state-of-the-art robust flight controllers, is located in the **offb_py_v1_neuromhe.py** Python file (lines 504-659). This file can be found in the **SecVII-C (source code)/Evaluation in real-world experiment/Code used in onboard computer** directory.
+Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907. The primary code implementing our method in the onboard computer, along with other state-of-the-art robust flight controllers, is located in the **offb_py_v1_neuromhe.py** Python file (lines 504-659). This file can be found in the **SecVII-C (source code)/Evaluation in real-world experiment/Code used in onboard computer** directory.
 
 ## 4. Contact Us
 If you encounter a bug in your implementation of the code, please do not hesitate to inform me.
