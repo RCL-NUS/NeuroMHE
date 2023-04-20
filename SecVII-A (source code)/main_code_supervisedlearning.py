@@ -135,7 +135,7 @@ def Train(epsilon0, gmin0):
     # Reset a neural network model
     # model_QR = Uav_NeuralNet.Net(D_in, D_h, D_out)
     # Save the initial model obtained above 
-    # (since the neural network parameters are randomly initialized, use the saved initial model to replicate the same training results in the paper)
+    # (since the neural network parameters are randomly initialized, use the saved initial model to reproduce the same training results in the paper)
     PATH0   = "trained_data/initial_model.pt"
     # torch.save(model_QR, PATH0)
     # Load the initial model
