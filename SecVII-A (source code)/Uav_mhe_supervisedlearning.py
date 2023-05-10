@@ -408,7 +408,7 @@ class KF_gradient_solver:
         S       = self.horizon*[np.zeros((self.n_xmhe, self.n_xmhe))]
         T       = self.horizon*[np.zeros((self.n_xmhe, self.n_xmhe))]
         F_bar   = (self.horizon-1)*[np.zeros((self.n_xmhe, self.n_xmhe))]
-        if self.horizon == 1: 
+        if self.horizon == 1: # full information estimator
             S_k = -matddLxx[0]
             T_k = -matddLxp[0]
         else:
