@@ -53,7 +53,7 @@ class quadrotor:
         return R
        
 
-    # Reduced body dynamics, state:v,df,omega,dtau, input:q,noise, output:v,omega
+    # Reduced body dynamics, state:v,df,omega,dtau, input:noise, output:v,omega
     def uav_dywb(self,x,noise):
         # velocity
         v      = vertcat(x[0,0], x[1,0], x[2,0])
