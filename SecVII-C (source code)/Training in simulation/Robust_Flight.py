@@ -568,10 +568,10 @@ class KF_gradient_solver:
             
             # state corrector
             if k < self.horizon-2: # the last index is always smaller than the dimension by 1
-                T_k   = np.matmul(np.matmul(matddLxw[k+1], LA.inv(matddLww[k+1])), matddLwp[k+1])-matddLxp[k+1] # T_k1: T_{k+1}
+                T_k1   = np.matmul(np.matmul(matddLxw[k+1], LA.inv(matddLww[k+1])), matddLwp[k+1])-matddLxp[k+1] # T_k1: T_{k+1}
             else:
-                T_k   = -matddLxp[k+1]
-            T[k+1]    = T_k
+                T_k1   = -matddLxp[k+1]
+            T[k+1]    = T_k1
             X_KFk1    = np.matmul((np.identity(self.n_xmhe)+np.matmul(C[k+1], S[k+1])), X_kk1) + np.matmul(C[k+1], T[k+1])
             X_KF[k+1] = X_KFk1
      
