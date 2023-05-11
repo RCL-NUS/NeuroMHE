@@ -578,7 +578,7 @@ class KF_gradient_solver:
             X_kk1     = np.matmul(F_bar[k], X_KF[k]) - np.matmul(np.matmul(matG[k], LA.inv(matddLww[k])), matddLwp[k]) # X_kk1: X^hat_{k+1|k}
             # error covariance
             P_k1       = np.matmul(np.matmul(F_bar[k], C[k]), np.transpose(F_bar[k])) + np.matmul(np.matmul(matG[k], LA.inv(matddLww[k])), np.transpose(matG[k])) # P_k1: P_{k+1}
-            # corrector of the estimation error covariance (from which the Kalman gain can be extracted using the matrix inversion lemma)
+            # corrector of the estimation error covariance 
             if k < self.horizon-2:
                 S_k1   = np.matmul(np.matmul(matddLxw[k+1], LA.inv(matddLww[k+1])), np.transpose(matddLxw[k+1]))-matddLxx[k+1] # S_k1: S_{k+1}
             else:
@@ -587,7 +587,7 @@ class KF_gradient_solver:
             C_k1      = np.matmul(LA.inv(np.identity(self.n_xmhe)-np.matmul(P_k1, S[k+1])), P_k1)
             C[k+1]    = C_k1
             
-            # state corrector
+            # state corrector (from which the Kalman gain can be extracted using the matrix inversion lemma)
             if k < self.horizon-2:
                 T_k1   = np.matmul(np.matmul(matddLxw[k+1], LA.inv(matddLww[k+1])), matddLwp[k+1])-matddLxp[k+1] # T_k1: T_{k+1}
             else:
