@@ -620,7 +620,7 @@ def Evaluate():
         nn_input= np.reshape(np.vstack((np.reshape(state_m[0:6,0],(6,1)),Euler_m,np.reshape(state_m[15:18,0],(3,1)))),(D_in,1))
         # nn_input= np.reshape(np.vstack((np.reshape(state_m[0:3,0],(3,1)),2*np.reshape(state_m[3:6,0],(3,1)), Euler_m,np.reshape(state_m[15:18,0],(3,1)))),(D_in,1))
 
-        # State estimation and control 200Hz
+        # State estimation and control 100Hz
         if (k%ratio)==0: 
             Y            += [state_m]
             # nn_input = Y[-1]
