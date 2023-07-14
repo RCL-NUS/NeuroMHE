@@ -44,7 +44,8 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
      
 The above training relies on a 10-second segment from a figure-8 flight trajectory, as used in the paper. It encompasses a broad velocity range of 0.05 m/s to 16.38 m/s. Consequently, this segment is referred to as the 'fast training set'. One advantage of NeuroBEM is that its accuracy declines by merely 20% when the training dataset encompasses a limited portion of the velocity-range space in comparison to the test dataset. To show how our NeuroMHE performs in this case, we select another 10-second segment from a relatively slow wobbly circle trajectory, which only encompasses a limited velocity range of 0.19 m/s to 5.18 m/s. This slow segemnt is referred to as the 'slow training set'. The following two figures present a comparison of the velocity-range space between the training sets and the partial test set.
 
-![comparison_velocity_space](https://user-images.githubusercontent.com/70559054/232182162-9247d3f6-6ef9-4e05-862e-e490ecc867d2.png)
+![3d_velocityspace](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/f2c3c82f-74d2-461b-89e8-a5039f6ee992)
+
 
 We evaluate the performance of NeuroMHE, trained on the 'slow training set', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in the following table where the NeuroMHE rained on the 'slow training set' is marked with an asterisk.
 
