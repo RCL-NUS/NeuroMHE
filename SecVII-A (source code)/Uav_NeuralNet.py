@@ -34,9 +34,9 @@ class Net(nn.Module):
         # convert state s to tensor
         S = torch.tensor(input, dtype=torch.float) # column 2D tensor
         z1 = self.linear1(S.t()) # linear function requires the input to be a row tensor
-        z2 = F.leaky_relu(z1)  # hidden layer 1
+        z2 = F.relu(z1)  # hidden layer 1
         z3 = self.linear2(z2)
-        z4 = F.leaky_relu(z3)  # hidden layer 2
+        z4 = F.relu(z3)  # hidden layer 2
         z5 = self.linear3(z4)  # output layer
         return z5.t()
 
