@@ -40,17 +40,25 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 * Training: type 'train' without the quotation mark in the terminal.
 * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. Note that you can skip the training process and directly evaluate the performance using the trained network model **Trained_model.pt** that is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
 
-     ![NeuroBEM test dataset](https://user-images.githubusercontent.com/70559054/227719146-8e29a75b-7619-46a9-92e1-00718121ec9f.png)
-     
-One advantage of NeuroBEM is that its accuracy declines by merely 20% when the training dataset encompasses a limited portion of the velocity-range space in comparison to the test dataset. To show how our NeuroMHE performs in this case, we select a 10-second-long segment from a relatively slow wobbly circle trajectory, which only encompasses a limited velocity range of 0.19 m/s to 5.18 m/s. The following two figures present a comparison of the velocity-range space between the training sets and the partial test set.
+|                                         Trajectory Parameters of NeuroBEM Test Dataset                                           |
+:----------------------------------------------------------------------------------------------------------------------------------:
+![test dataset](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/18a888d2-cfc2-4005-bc57-1c6e52a4a33a)
 
-![velocity_space_comparison](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/dc982bce-92e9-43c6-aedf-80ea17c0ebb3)
 
-We evaluate the performance of NeuroMHE, trained on the 'limited training set', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in the following table.
+One advantage of NeuroBEM is that its accuracy only declines by 20% when the training dataset encompasses a limited portion of the velocity-range space compared to the test dataset. To assess the performance of our NeuroMHE in this scenario, we select two 10-second-long segments: 1) one from an agile figure-8 trajectory, covering a wide velocity range of 0.05 m/s to 16.38 m/s, referred to as the 'fast training set'; 2) the other from a relatively slow wobbly circle trajectory, with a limited velocity range of 0.19 m/s to 5.18 m/s, referred to as the 'slow training set. The following two figures present a comparison of the velocity-range space between the training sets and the partial test sets.
+               Velocity-Range Space: Training Sets               |              Velocity-Range Space: Partial Test Sets
+:---------------------------------------------------------------:|:--------------------------------------------------------------:
+![3d_velocityspace_training](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/7c0d344a-6ef5-4df5-8c5d-7be85084a09b) | ![3d_velocityspace_test](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/421f9c2e-6583-44db-853d-502ca0475912)
 
-![RMSE_slow_trainingset](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/7ae3bb17-1803-4a0c-aa7e-7b977864c770)
+We evaluate the performance of NeuroMHE, trained on the 'slow training set', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in the following table.
 
-Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force estimation than NeuroBEM across all of these trajectories{\color{blue}, achieving a reduction of up to $\color{blue}62.7\%$ (See the penultimate column). The only exception is the '3D Circle\_1' trajectory where both methods exhibit a similar RMSE value.} Furthermore, NeuroMHE exhibits a comparable performance in the overall torque estimation to that of NeuroBEM. The torque estimation performance could potentially be improved by using inertia-normalized quadrotor dynamics, wherein the force and torque magnitudes are similar. These findings underscore the superior generalizability of NeuroMHE to previously unseen challenging trajectories. This promising outcome also demonstrates the exceptional robustness of our approach with respect to the training dataset.
+|                              Estimation Errors (RMSEs) Comparisons on the NeuroBEM Test Dataset                                | 
+:--------------------------------------------------------------------------------------------------------------------------------:
+![RMSE_slow_trainingset](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/923667ae-d6fb-4683-9775-092c74a60434)
+
+
+
+Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force estimation than NeuroBEM across all of these trajectories{\color{blue}, achieving a reduction of up to 62.7% (See the penultimate column). The only exception is the '3D Circle\_1' trajectory where both methods exhibit a similar RMSE value.} Furthermore, NeuroMHE exhibits a comparable performance in the overall torque estimation to that of NeuroBEM. The torque estimation performance could potentially be improved by using inertia-normalized quadrotor dynamics, wherein the force and torque magnitudes are similar. These findings underscore the superior generalizability of NeuroMHE to previously unseen challenging trajectories. This promising outcome also demonstrates the exceptional robustness of our approach with respect to the training dataset.
 
 5. To train NeuroMHE on the 'slow training set', update the **train_set** in line 148 of the **main_code_supervisedlearning.py** Python file by replacing **merged_2021-02-23-14-41-07_seg_3.csv** with **merged_2021-02-03-13-44-49_seg_3.csv**. You can also directly reproduce the results in the above table using the trained network model (i.e., **Trained_model_slow.pt**) that is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
 
