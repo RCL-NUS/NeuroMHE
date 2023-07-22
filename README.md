@@ -49,7 +49,7 @@ One advantage of NeuroBEM is that its accuracy only declines by 20% when the tra
 :---------------------------------------------------------------:|:--------------------------------------------------------------:
 ![3d_velocityspace_training](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/7c0d344a-6ef5-4df5-8c5d-7be85084a09b) | ![3d_velocityspace_test](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/421f9c2e-6583-44db-853d-502ca0475912)
 
-We evaluate the performance of NeuroMHE, trained on the 'slow training set', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in the following table.
+We evaluate the performance of NeuroMHE, trained on the '**slow training set**', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in the following table.
 
 |                              Estimation Errors (RMSEs) Comparisons on the NeuroBEM Test Dataset                                | 
 :--------------------------------------------------------------------------------------------------------------------------------:
