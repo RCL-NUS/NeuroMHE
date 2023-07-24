@@ -28,9 +28,8 @@ import os
 
 """---------------------------------Load environment---------------------------------------"""
 # System parameters used in the paper of 'NeuroBEM'
-# Sys_para = np.array([0.752, 0.00252, 0.00214, 0.00436])
-Sys_para = np.array([0.752, 0.0025, 0.0021, 0.0043])
-# Sys_para  = np.array([0.772,0.0025,0.0021,0.0043]) # updated by the author of NeuroBEM, used for training
+# Sys_para = np.array([0.752, 0.0025, 0.0021, 0.0043])
+Sys_para  = np.array([0.772,0.0025,0.0021,0.0043]) # updated by the author of NeuroBEM, used for training
 
 # Sampling time-step, 400Hz
 dt_sample = 0.0025
