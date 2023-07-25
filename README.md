@@ -38,7 +38,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 3. Run the **main_code_supervisedlearning.py** Python file. 
 4. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
 * Training: type 'train' without the quotation mark in the terminal.
-* Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. Note that you can skip the training process and directly evaluate the performance using the trained network model **Trained_model.pt** to reproduce the RMSE results in the following table. The retained model is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
+* Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. _Note that you can skip the training process and directly evaluate the performance using the trained network model **Trained_model.pt** to reproduce the RMSE results in the following table_. The retained model is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
 
 |                                         Trajectory Parameters of NeuroBEM Test Dataset                                           |
 :----------------------------------------------------------------------------------------------------------------------------------:
@@ -55,11 +55,9 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
 :--------------------------------------------------------------------------------------------------------------------------------:
 ![RMSE_slow_trainingset](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/923667ae-d6fb-4683-9775-092c74a60434)
 
-
-
 Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force estimation than NeuroBEM across all of these trajectories, achieving a reduction of up to 62.7% (See the penultimate column). The only exception is the '3D Circle\_1' trajectory where both methods exhibit a similar RMSE value. Furthermore, NeuroMHE exhibits a comparable performance in the overall torque estimation to that of NeuroBEM. The torque estimation performance could potentially be improved by using inertia-normalized quadrotor dynamics, wherein the force and torque magnitudes are similar. These findings underscore the superior generalizability of NeuroMHE to previously unseen challenging trajectories. They also demonstrate the exceptional robustness of our approach with respect to the training dataset.
 
-5. To train NeuroMHE on the 'slow training set', update the **train_set** in line 148 of the **main_code_supervisedlearning.py** Python file by replacing **merged_2021-02-23-14-41-07_seg_3.csv** with **merged_2021-02-03-13-44-49_seg_3.csv**. You can also directly reproduce the results in the above table using the trained network model (i.e., **Trained_model_slow.pt**) that is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
+5. Check the RMSE results (presented in the above table and our paper). 
 
 
 
