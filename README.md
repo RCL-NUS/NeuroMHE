@@ -5,6 +5,10 @@ The ***Neural Moving Horizon Estimation (NeuroMHE)*** is an auto-tuning and adap
 1. [Project Overview](#project-Overview)
 2. [Dependency Packages](#Dependency-Packages)
 3. [How to Use](#How-to-Use)
+      1. [SecVII-A](#SecVII-A)
+      2. [SecVII-B](#SecVII-B)
+      3. [SecVII-C](#SecVII-C)
+      4. [Applications to other robots](#Applications-to-other-robots)
 4. [Acknowledgement](#Acknowledgement)
 5. [Contact Us](#Contact-Us)
 
