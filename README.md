@@ -96,6 +96,11 @@ Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force
 Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907. The primary code implementing our method in the onboard computer, along with other state-of-the-art robust flight controllers, is located in the Python file '**offb_py_v1_neuromhe.py**' (lines 504-659). This file can be found in the directory '**SecVII-C (source code)/Evaluation in real-world experiment/Code used in onboard computer**'.
 
 ### Applications to other robots
+Please be aware that although we demonstrated the effectiveness of our approach using a quadrotor, the proposed method is general and can be applied to robust adaptive control of other robotic systems. This only requires minor modifications in our code. Let us take the source code in the folder '**SecVII-B (source code)**' as an example and do the following:
+   * Update the robotic dynamics model in the Python file '**UavEnv.py**';
+   * Update the robotic controller in the Python file '**Robust_Flight.py**';
+   * Update the simulation environment for training and evaluation in the Python file '**main_code.py**'.
+
 
 ## 4. Acknowledgement
 We thank Leonard Bauersfeld for the help in using the flight dataset of NeuroBEM.
