@@ -5,7 +5,8 @@ The ***Neural Moving Horizon Estimation (NeuroMHE)*** is an auto-tuning and adap
 1. [Project Overview](#project-Overview)
 2. [Dependency Packages](#Dependency-Packages)
 3. [How to Use](#How-to-Use)
-4. [Contact Us](#Contact-Us)
+4. [Acknowledgement](#Acknowledgement)
+5. [Contact Us](#Contact-Us)
 
 
 ## 1. Project Overview
@@ -94,7 +95,12 @@ Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force
       
 Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907. The primary code implementing our method in the onboard computer, along with other state-of-the-art robust flight controllers, is located in the Python file '**offb_py_v1_neuromhe.py**' (lines 504-659). This file can be found in the directory '**SecVII-C (source code)/Evaluation in real-world experiment/Code used in onboard computer**'.
 
-## 4. Contact Us
+### Applications to other robots
+
+## 4. Acknowledgement
+We thank Leonard Bauersfeld for the help in using the flight dataset of NeuroBEM.
+
+## 5. Contact Us
 If you encounter a bug in your implementation of the code, please do not hesitate to inform me.
 * Name: Mr. Bingheng Wang
 * Email: wangbingheng@u.nus.edu
