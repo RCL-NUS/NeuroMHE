@@ -38,7 +38,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 3. Run the Python file '**main_code_supervisedlearning.py**'. 
 4. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
    * Training: type 'train' without the quotation mark in the terminal.
-   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. _Note that you can skip the training process and directly evaluate the performance using the trained neural network model **Trained_model.pt** to reproduce the RMSE results in the following table_. The retained model is saved in the folder '**trained_data**' within the downloaded folder '**SecVII-A (source code)**'.
+   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. Note that you can skip the training process and directly evaluate the performance using the trained neural network model '**Trained_model.pt**' to reproduce the RMSE results in the following table. The retained model is saved in the folder '**trained_data**'.
 
 |                                         Trajectory Parameters of NeuroBEM Test Dataset                                           |
 :----------------------------------------------------------------------------------------------------------------------------------:
@@ -63,30 +63,30 @@ Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force
 
    The use of different values for the quadrotor mass stems from two reasons. First, the mass was originally reported as 0.752 kg in [[1]](#1), but the authors subsequently updated it to be 0.772 kg (See https://rpg.ifi.uzh.ch/neuro_bem/Readme.html). Second, the residual forces (i.e., $\Delta_{f_x}$, $\Delta_{f_x}$, and $\Delta_{f_z}$) provided in columns 36-38 of the NeuroBEM dataset, considered equivalent to the force estimation error in our context (e.g., $\Delta_{f_x}=d_{f_x}-\hat d_{f_x}$), have been computed using the mass of 0.752 kg. As the provided residual forces of NeuroBEM are expressed in the body frame and convenient for computing the RMSEs using the vector error, we choose to present our RMSE comparison under condition B.
    
-   Within the folder '**Check_RMSE**', run the Python file '**RMSE_Computation_Slow_Better_Cond.B.py**' to replicate the RMSE results in the above table and our paper.
+   In the folder '**Check_RMSE**', run the Python file '**RMSE_Computation_Slow_Better_Cond_B.py**' to replicate the RMSE results presented in the above table and our paper. For completeness, we also provide the RMSE results of NeuroMHE trained on the fast training set under both conditions. In the same folder, simply run the Python files '**RMSE_Computation_Cond_A.py**' and '**RMSE_Computation_Cond_B.py**' respectively.
 
 
 ### SecVII-B
-1. Run the **main_code.py** Python file in the downloaded **SecVII-B (source code)** folder.
+1. Run the Python file '**main_code.py**' in the downloaded folder '**SecVII-B (source code)**'.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
    * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
-   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 5 controllers, as shown below. Note again that, like the case in SecVII-A, you can also skip the training process and directly evaluate the performance using the trained network model **trained_nn_model.pt** that is saved in the **trained_data** folder within the downloaded **SecVII-B (source code)** folder.
+   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 5 controllers, as shown below. Note again that, like the case in SecVII-A, you can also skip the training process and directly evaluate the performance using the trained neural network model '**trained_nn_model.pt**' that is saved in the folder '**trained_data**'.
 
      ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227720537-e2910ce5-7128-4bed-864b-848c787a7413.png)
      
-3. Run the **plotting.py** python file in the downloaded **SecVII-B (source code)** folder to plot figures and show the following animation demo.
+3. Run the Python file '**plotting.py**' to plot figures and show the following animation demo.
 
      https://user-images.githubusercontent.com/70559054/227720768-c70ea330-114e-4058-aea6-619bbdc3f379.mp4
      
 ### SecVII-C
-1. Run the **main_code.py** Python file in the **Training in simulation** folder within the downloaded **SecVII-C (source code)** folder.
+1. Run the Python file '**main_code.py**' in the folder '**Training in simulation**' within the downloaded folder '**SecVII-C (source code)**'.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
    * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
    * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 4 controllers, as shown below.
 
      ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227721390-17b9d275-23e2-4506-9bd3-c829363c981a.png)
 
-3. Run the **T-RO-experiment-data-processing_22_Feb.py** Python file located in the **SecVII-C (source code)/Evaluation in real-world experiment/Experiment Raw Data** directory to generate the figures depicting the experimental results. A video demonstration showcasing the experiments is presented below.
+3. Run the Python file '**T-RO-experiment-data-processing_22_Feb.py**' located in the directory '**SecVII-C (source code)/Evaluation in real-world experiment/Experiment Raw Data**' to generate the figures depicting the experimental results. A video demonstration showcasing the experiments is presented below.
 
       https://user-images.githubusercontent.com/70559054/227721900-338651dc-ce40-4288-ae8a-844ab37c50c1.mp4
       
