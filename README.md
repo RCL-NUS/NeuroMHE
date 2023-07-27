@@ -65,7 +65,7 @@ Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force
    
    In the folder '**Check_RMSE**', run the Python file '**RMSE_Computation_Slow_Better_Cond_B.py**' to replicate the RMSE results presented in the above table and our paper. Additionally, we provide the RMSE results of NeuroMHE trained on the fast training set under both conditions. To access these results, locate the Python files '**RMSE_Computation_Cond_A.py**' and '**RMSE_Computation_Cond_B.py**' in the same folder and run them respectively.
 
-   By comparing the RMSE results obtained from '**RMSE_Computation_Cond_B.py**', we observe that NeuroMHE, trained on the slow training set, exhibits a better estimation performance. This improvement can be attributed to an increased number of training episodes and slight adjustments in the weightings of the loss function $L\left ( \mathbf{\hat{x}} \right )$ that evaluates the quality of the MHE solution trajectory. This demonstrates the exceptional robustness of our approach concerning variations in the training dataset.
+   By comparing the RMSE results obtained from '**RMSE_Computation_Cond_B.py**', we observe that NeuroMHE, trained on the slow training set, exhibits a better estimation performance. This improvement can be attributed to an increased number of training episodes and slight adjustments in the weightings of the loss function $L\left ( \mathbf{\hat{x}} \right )$ that evaluates the quality of the MHE solution trajectory. These findings highlight the exceptional robustness of our approach concerning variations in the training dataset.
 
 
 ### SecVII-B
