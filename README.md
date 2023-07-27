@@ -33,12 +33,12 @@ Please make sure that the following packages have already been installed before 
 First and foremost, the training process for NeuroMHE is both efficient and straightforward to setup. The source code has been comprehensively annotated to facilitate ease of use. To reproduce the simulation results presented in the paper, simply follow the steps outlined below, sequentially, after downloading and decompressing all the necessary folders.
 
 ### SecVII-A
-1. Download **processed_data.zip** and **predictions.tat.xz** from https://download.ifi.uzh.ch/rpg/NeuroBEM/. The former file is utilized for training NeuroMHE, whereas the latter serves the purpose of evaluation and comparison with NeuroBEM.
-2. Relocate the **bem+nn** folder from the decomprassed **predictions.tat.xz** archive to the downloaded **SecVII-A (source code)** folder, and place the decompressed **processed_data.zip** within the **SecVII-A (source code)** folder as well.
-3. Run the **main_code_supervisedlearning.py** Python file. 
+1. Download '**processed_data.zip**' and '**predictions.tat.xz**' from https://download.ifi.uzh.ch/rpg/NeuroBEM/. The former file is utilized for training NeuroMHE, whereas the latter serves the purpose of evaluation and comparison with NeuroBEM.
+2. Relocate the folder '**bem+nn**' from the decomprassed archive '**predictions.tat.xz**' to the downloaded folder '**SecVII-A (source code)**', and place the decompressed '**processed_data.zip**' within the folder '**SecVII-A (source code)**' as well.
+3. Run the Python file '**main_code_supervisedlearning.py**'. 
 4. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
    * Training: type 'train' without the quotation mark in the terminal.
-   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. _Note that you can skip the training process and directly evaluate the performance using the trained neural network model **Trained_model.pt** to reproduce the RMSE results in the following table_. The retained model is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
+   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. _Note that you can skip the training process and directly evaluate the performance using the trained neural network model **Trained_model.pt** to reproduce the RMSE results in the following table_. The retained model is saved in the folder '**trained_data**' within the downloaded folder '**SecVII-A (source code)**'.
 
 |                                         Trajectory Parameters of NeuroBEM Test Dataset                                           |
 :----------------------------------------------------------------------------------------------------------------------------------:
@@ -63,7 +63,7 @@ Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force
 
    The use of different values for the quadrotor mass stems from two reasons. First, the mass was originally reported as 0.752 kg in [[1]](#1), but the authors subsequently updated it to be 0.772 kg (See https://rpg.ifi.uzh.ch/neuro_bem/Readme.html). Second, the residual forces (i.e., $\Delta_{f_x}$, $\Delta_{f_x}$, and $\Delta_{f_z}$) provided in columns 36-38 of the NeuroBEM dataset, considered equivalent to the force estimation error in our context (e.g., $\Delta_{f_x}=d_{f_x}-\hat d_{f_x}$), have been computed using the mass of 0.752 kg. As the provided residual forces of NeuroBEM are expressed in the body frame and convenient for computing the RMSEs using the vector error, we choose to present our RMSE comparison under condition B.
    
-   To reproduce the RMSE results in the above table and our paper, run the **RMSE_Computation_Slow_Better_Cond.B.py** Python file located in the **Check_RMSE** folder.
+   Within the folder '**Check_RMSE**', run the Python file '**RMSE_Computation_Slow_Better_Cond.B.py**' to replicate the RMSE results in the above table and our paper.
 
 
 ### SecVII-B
