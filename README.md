@@ -37,8 +37,8 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 2. Relocate the **bem+nn** folder from the decomprassed **predictions.tat.xz** archive to the downloaded **SecVII-A (source code)** folder, and place the decompressed **processed_data.zip** within the **SecVII-A (source code)** folder as well.
 3. Run the **main_code_supervisedlearning.py** Python file. 
 4. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
-* Training: type 'train' without the quotation mark in the terminal.
-* Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. _Note that you can skip the training process and directly evaluate the performance using the trained neural network model **Trained_model.pt** to reproduce the RMSE results in the following table_. The retained model is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
+   * Training: type 'train' without the quotation mark in the terminal.
+   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. _Note that you can skip the training process and directly evaluate the performance using the trained neural network model **Trained_model.pt** to reproduce the RMSE results in the following table_. The retained model is saved in the **trained_data** folder within the downloaded **SecVII-A (source code)** folder.
 
 |                                         Trajectory Parameters of NeuroBEM Test Dataset                                           |
 :----------------------------------------------------------------------------------------------------------------------------------:
@@ -57,14 +57,20 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
 
 Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force estimation than NeuroBEM across all of these trajectories, achieving a reduction of up to 62.7% (See the penultimate column). The only exception is the '3D Circle\_1' trajectory where both methods exhibit a similar RMSE value. Furthermore, NeuroMHE exhibits a comparable performance in the overall torque estimation to that of NeuroBEM. The torque estimation performance could potentially be improved by using inertia-normalized quadrotor dynamics, wherein the force and torque magnitudes are similar. These findings underscore the superior generalizability of NeuroMHE to previously unseen challenging trajectories. They also demonstrate the exceptional robustness of our approach with respect to the training dataset.
 
-5. Check the RMSE results. The RMSEs can be computed under two conditions: A and B. Under condition A, the force is expressed in the world frame (cond.A1), and the RMSEs of the planar and the overall disturbances are computed using the scalar error (cond.A2), e.g., $\Delta_{f}=\sqrt{d_{f_x}^2+d_{f_y}^2+d_{f_z}^2} - \sqrt{ \hat d_{f_x}^2 + \hat d_{f_y}^2 + \hat d_{f_z}^2}$. Additionally, a mass of 0.772 kg is used for obtaining the ground truth force $\mathbf d_{f}$ (cond.A3). On the other hand, under condition B, the force is expressed in the body frame (cond.B1), and the RMSEs of the planar and the overall disturbances are computed using the vector error (cond.B2), e.g., $\Delta_{f}=\sqrt{(d_{f_x}-\hat d_{f_x})^2 + (d_{f_y}-\hat d_{f_y})^2 + (d_{f_z}-\hat d_{f_z})^2}$. Furthermore, a mass of 0.752 kg is used for obtaining the ground truth force $\mathbf d_{f}$ (cond.B3). The use of different values for the quadrotor mass stems from two reasons. First, the mass was originally reported as 0.752 kg in [[1]](#1), but the authors subsequently updated it to be 0.772 kg (See https://rpg.ifi.uzh.ch/neuro_bem/Readme.html). Second, the residual forces (i.e., $\Delta_{f_x}$, $\Delta_{f_x}$, and $\Delta_{f_z}$) provided in columns 36-38 of the NeuroBEM dataset, considered equivalent to the force estimation error in our context (e.g., $\Delta_{f_x}=d_{f_x}-\hat d_{f_x}$), have been computed using the mass of 0.752 kg. As the provided residual forces of NeuroBEM are expressed in the body frame and convenient for computing the RMSEs using the vector error, we choose to present our RMSE comparison under condition B.
+5. Check the RMSE results. The RMSEs can be computed under two conditions: A and B.
+   * Under condition A, the force is expressed in the world frame (cond.A1), and the RMSEs of the planar and the overall disturbances are computed using the scalar error (cond.A2), e.g., $\Delta_{f}=\sqrt{d_{f_x}^2+d_{f_y}^2+d_{f_z}^2} - \sqrt{ \hat d_{f_x}^2 + \hat d_{f_y}^2 + \hat d_{f_z}^2}$. Additionally, a mass of 0.772 kg is used for obtaining the ground truth force $\mathbf d_{f}$ (cond.A3).
+   * Under condition B, the force is expressed in the body frame (cond.B1), and the RMSEs of the planar and the overall disturbances are computed using the vector error (cond.B2), e.g., $\Delta_{f}=\sqrt{(d_{f_x}-\hat d_{f_x})^2 + (d_{f_y}-\hat d_{f_y})^2 + (d_{f_z}-\hat d_{f_z})^2}$. Furthermore, a mass of 0.752 kg is used for obtaining the ground truth force $\mathbf d_{f}$ (cond.B3).
+
+   The use of different values for the quadrotor mass stems from two reasons. First, the mass was originally reported as 0.752 kg in [[1]](#1), but the authors subsequently updated it to be 0.772 kg (See https://rpg.ifi.uzh.ch/neuro_bem/Readme.html). Second, the residual forces (i.e., $\Delta_{f_x}$, $\Delta_{f_x}$, and $\Delta_{f_z}$) provided in columns 36-38 of the NeuroBEM dataset, considered equivalent to the force estimation error in our context (e.g., $\Delta_{f_x}=d_{f_x}-\hat d_{f_x}$), have been computed using the mass of 0.752 kg. As the provided residual forces of NeuroBEM are expressed in the body frame and convenient for computing the RMSEs using the vector error, we choose to present our RMSE comparison under condition B.
+   
+   To reproduce the RMSE results in the above table and our paper, run the **RMSE_Computation_Slow_Better_Cond.B.py** Python file located in the **Check_RMSE** folder.
 
 
 ### SecVII-B
 1. Run the **main_code.py** Python file in the downloaded **SecVII-B (source code)** folder.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
-* Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
-* Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 5 controllers, as shown below. Note again that, like the case in SecVII-A, you can also skip the training process and directly evaluate the performance using the trained network model **trained_nn_model.pt** that is saved in the **trained_data** folder within the downloaded **SecVII-B (source code)** folder.
+   * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
+   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 5 controllers, as shown below. Note again that, like the case in SecVII-A, you can also skip the training process and directly evaluate the performance using the trained network model **trained_nn_model.pt** that is saved in the **trained_data** folder within the downloaded **SecVII-B (source code)** folder.
 
      ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227720537-e2910ce5-7128-4bed-864b-848c787a7413.png)
      
@@ -75,8 +81,8 @@ Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force
 ### SecVII-C
 1. Run the **main_code.py** Python file in the **Training in simulation** folder within the downloaded **SecVII-C (source code)** folder.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
-* Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
-* Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 4 controllers, as shown below.
+   * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
+   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a controller for evaluation. There are 4 controllers, as shown below.
 
      ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227721390-17b9d275-23e2-4506-9bd3-c829363c981a.png)
 
