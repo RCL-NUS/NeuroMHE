@@ -63,7 +63,7 @@ Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force
 
    The use of different values for the quadrotor mass stems from two reasons. First, the mass was originally reported as 0.752 kg in [[1]](#1), but the authors subsequently updated it to be 0.772 kg (See https://rpg.ifi.uzh.ch/neuro_bem/Readme.html). Second, the residual forces (i.e., $\Delta_{f_x}$, $\Delta_{f_x}$, and $\Delta_{f_z}$) provided in columns 36-38 of the NeuroBEM dataset, considered equivalent to the force estimation error in our context (e.g., $\Delta_{f_x}=d_{f_x}-\hat d_{f_x}$), have been computed using the mass of 0.752 kg. As the provided residual forces of NeuroBEM are expressed in the body frame and convenient for computing the RMSEs using the vector error, we choose to present our RMSE comparison under condition B.
    
-   In the folder '**Check_RMSE**', run the Python file '**RMSE_Computation_Slow_Better_Cond_B.py**' to replicate the RMSE results presented in the above table and our paper. For completeness, we also provide the RMSE results of NeuroMHE trained on the fast training set under both conditions. In the same folder, simply run the Python files '**RMSE_Computation_Cond_A.py**' and '**RMSE_Computation_Cond_B.py**' respectively.
+   In the folder '**Check_RMSE**', run the Python file '**RMSE_Computation_Slow_Better_Cond_B.py**' to replicate the RMSE results presented in the above table and our paper. For completeness, we also provide the RMSE results of NeuroMHE trained on the fast training set under both conditions. To access these results, find the Python files '**RMSE_Computation_Cond_A.py**' and '**RMSE_Computation_Cond_B.py**' in the same '**Check_RMSE**' folder and run them respectively.
 
 
 ### SecVII-B
