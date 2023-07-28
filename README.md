@@ -50,7 +50,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 ![test dataset](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/afbdc415-288b-4938-8bc9-7b18c59d6f40)
 
 One advantage of NeuroBEM is that its accuracy only declines by 20% when the training dataset encompasses a limited portion of the velocity-range space compared to the test dataset. To assess the performance of our NeuroMHE in this scenario, we select two 10-second-long segments for training: 1) one from an agile figure-8 trajectory, covering a wide velocity range of 0.05 m/s to 16.38 m/s, referred to as the 'fast training set'; 2) the other from a relatively slow wobbly circle trajectory, with a limited velocity range of 0.19 m/s to 5.18 m/s, referred to as the 'slow training set'. The following figures present a comparison of the velocity-range space between the training sets and the partial test sets.
-        Velocity-Range Space (World Frame): Training Sets        |        Velocity-Range Space (World Frame): Partial Test Sets
+        Velocity-Range Space (World Frame): Training Sets        |      Velocity-Range Space (World Frame): Partial Test Sets
 :---------------------------------------------------------------:|:--------------------------------------------------------------:
 ![3d_velocityspace_training](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/7c0d344a-6ef5-4df5-8c5d-7be85084a09b) | ![3d_velocityspace_test](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/421f9c2e-6583-44db-853d-502ca0475912)
 
