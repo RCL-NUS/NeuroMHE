@@ -54,13 +54,7 @@ One advantage of NeuroBEM is that its accuracy only declines by 20% when the tra
 :---------------------------------------------------------------:|:--------------------------------------------------------------:
 ![3d_velocityspace_training](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/7c0d344a-6ef5-4df5-8c5d-7be85084a09b) | ![3d_velocityspace_test](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/421f9c2e-6583-44db-853d-502ca0475912)
 
-We evaluate the performance of NeuroMHE, trained on the '**slow training set**', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in the following table.
-
-|                              Estimation Errors (RMSEs) Comparisons on the NeuroBEM Test Dataset                                | 
-:--------------------------------------------------------------------------------------------------------------------------------:
-![RMSE_slow_trainingset](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/923667ae-d6fb-4683-9775-092c74a60434)
-
-Notably, NeuroMHE demonstrates a significantly smaller RMSE in the overall force estimation than NeuroBEM across all of these trajectories, achieving a reduction of up to 62.7% (See the penultimate column). The only exception is the '3D Circle\_1' trajectory where both methods exhibit a similar RMSE value. Furthermore, NeuroMHE exhibits a comparable performance in the overall torque estimation to that of NeuroBEM. The torque estimation performance could potentially be improved by using inertia-normalized quadrotor dynamics, wherein the force and torque magnitudes are similar. These findings underscore the superior generalizability of NeuroMHE to previously unseen challenging trajectories. 
+We evaluate the performance of NeuroMHE, trained on the '**slow training set**', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in Table V of our paper.
 
 5. Check the RMSE results. The RMSEs can be computed under two conditions: A and B.
    * Under condition A, the force is expressed in the world frame (cond.A1), and the RMSEs of the planar and the overall disturbances are computed using the scalar error (cond.A2), e.g., $\Delta_{f}=\sqrt{d_{f_x}^2+d_{f_y}^2+d_{f_z}^2} - \sqrt{ \hat d_{f_x}^2 + \hat d_{f_y}^2 + \hat d_{f_z}^2}$. Additionally, a mass of 0.772 kg is used for obtaining the ground truth force $\mathbf d_{f}$ (cond.A3).
