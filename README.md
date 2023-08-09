@@ -33,6 +33,7 @@ Please make sure that the following packages have already been installed before 
 * Scipy: version 1.8.1 Info: https://scipy.org/
 * Pandas: version 1.4.2 Info: https://pandas.pydata.org/
 * filterpy: version 1.4.5 Info: https://filterpy.readthedocs.io/en/latest/
+* scikit-learn: version 1.0.2 Info: https://scikit-learn.org/stable/whats_new/v1.0.html
 
 ## 3. How to Use
 First and foremost, the training process for NeuroMHE is both efficient and straightforward to setup. The source code has been comprehensively annotated to facilitate ease of use. To reproduce the simulation results presented in the paper, simply follow the steps outlined below, sequentially, after downloading and decompressing all the necessary folders.
