@@ -149,7 +149,7 @@ rmse_tx_bemnn  = format(mean_squared_error(Bemnn_tx, Gt_tx, squared=False),'.3f'
 rmse_ty_bemnn  = format(mean_squared_error(Bemnn_ty, Gt_ty, squared=False),'.3f')
 rmse_tz_bemnn  = format(mean_squared_error(Bemnn_tz, Gt_tz, squared=False),'.3f')
 
-print('---------------RMSEs with scalar error (world frame and m=0.772kg, as used in T-RO 23-0314 v1)------------------')
+print('---------------RMSEs with scalar error (f in world frame and m=0.772kg, as used in T-RO 23-0314 v1)------------------')
 print('----------------------------------------------------------------------------------------------------------------')
 print('Traj. | Method |   f_x   |   f_y   |   f_z   |   t_x   |   t_y   |   t_z   |   f_xy   |   t_xy   |   f   |   t')
 print('----------------------------------------------------------------------------------------------------------------')
@@ -158,7 +158,7 @@ print(key, ' | NeuroMHE | ', rmse_fx, ' | ', rmse_fy, ' | ', rmse_fz, ' | ', rms
 print('----------------------------------------------------------------------------------------------------------------')
 
 # print("================================================= As A Comparison ==============================================")
-# print('-------------------------------RMSEs with vector error (world frame and m=0.772kg)------------------------------')
+# print('-------------------------------RMSEs with vector error (f in world frame and m=0.772kg)------------------------------')
 # print('----------------------------------------------------------------------------------------------------------------')
 # print('Traj. | Method |   f_x   |   f_y   |   f_z   |   t_x   |   t_y   |   t_z   |   f_xy   |   t_xy   |   f   |   t')
 # print('----------------------------------------------------------------------------------------------------------------')
