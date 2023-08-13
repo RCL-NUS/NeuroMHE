@@ -63,8 +63,6 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
 
    To demonstrate the mass verification, run the MATLAB file '**residual_force_trajectory name.m**' located in the folder '**MATLAB_code_for_mass_verification**'. For example, running the MATLAB file '**residual_force_3D_Circle_2.m**' demenstrates that the NeuroBEM's RMSE for the overall force in the 3D Circle_2 trajectory, with the provided residual force data (calculated with a mass of 0.752 kg), is 0.28 (as indicated by the value of 'rmse_bemnn' in Workspace). In contrast, the RMSE value changes to 0.499 with a mass of 0.772 kg (as indicated by the 'rmse_bemnn_updated' value in Workspace).
 
-   By comparing the RMSE results obtained from '**RMSE_vector_error.py**', we observe that NeuroMHE, trained on the slow training set, exhibits a better estimation performance. These findings highlight the exceptional robustness of our approach concerning variations in the training dataset.
-
 
 ### SecVII-B
 1. Run the Python file '**main_code.py**' in the downloaded folder '**SecVII-B (source code)**'.
