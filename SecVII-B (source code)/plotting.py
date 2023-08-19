@@ -25,6 +25,9 @@ wing_len = 1
 # Sampling time-step for MHE
 dt_sample = 1e-2
 uav = quadrotor(uav_para,dt_sample)
+
+if not os.path.exists("plots_in_paper"):
+    os.makedirs("plots_in_paper")
 """--------------Load data----------------"""
 # position history during training
 Position_training = np.load('trained_data/Position_train.npy')
