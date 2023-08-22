@@ -1,6 +1,8 @@
 # NeuroMHE
 The ***Neural Moving Horizon Estimation (NeuroMHE)*** is an auto-tuning and adaptive optimal estimator. It fuses a neural network with an MHE to realize accurate estimation and fast online adaptation, leveraging the advantages from both advanced machine learning techniques and control-theoretic estimation algorithms. The neural network can be trained efficiently from the robot's trajectory tracking errors using reinforcement learning without the need for the ground truth data.
 
+![neuromhe_structure](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/93479d8b-d9e5-48f0-aed3-dbad0dc00d21width=50%height=50%)
+
 ## Table of contents
 1. [Project Overview](#project-Overview)
 2. [Dependency Packages](#Dependency-Packages)
