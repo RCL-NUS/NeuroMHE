@@ -179,7 +179,8 @@ def Train(epsilon0, gmin0, tunable_para0):
     if estimator=='a':
         epsilon = epsilon0
         gmin    = gmin0
-        # (since the neural network parameters are randomly initialized, use the saved initial model to reproduce the same training results in the paper)
+        # (since the neural network parameters are randomly initialized, use the saved initial model to produce the closely-similar training results in the paper)
+        # (*It is difficult to guarantee a perfect reproduction even with the saved initial model, due to the measurement noise that affects the MHE estimation results entering the feedback controller)
         PATH0 = "trained_data/initial_nn_model.pt" 
         model_QR = torch.load(PATH0)
         # model_QR = uavNN.Net(D_in, D_h, D_out)
