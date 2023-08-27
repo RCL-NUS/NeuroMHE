@@ -544,7 +544,7 @@ class KF_gradient_solver:
         self.x      = vertcat(self.xa[0:6,0], self.xa[9:21,0]) 
         self.traj_e = self.x - self.ref
         w_p, w_v, w_r, w_w    = 1,1, 1e-2, 1e-2 # 1.5, 1.5, 1e-2,1e-2
-        self.Kloss  = 2e4
+        self.Kloss  = 2.5e2
         weight      = np.array([w_p, w_p, w_p, w_v, w_v, w_v, w_r, w_r, w_r, w_r, w_r, w_r, w_r, w_r, w_r, w_w, w_w, w_w])
         self.loss   = mtimes(mtimes(transpose(self.traj_e), np.diag(weight)), self.traj_e)
 
