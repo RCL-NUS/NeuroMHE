@@ -229,10 +229,6 @@ def Train(epsilon0, gmin0):
                 
                 # Solve an MHE in the forward path
                 time_index   = j-n_start
-                if n_ep==0 and time_index == 0 and gamma_r <= gamma_q +0.11:
-                    flag = 1
-                    break
-
                 opt_sol      = uavMHE.MHEsolver(Y, x_hat, xmhe_traj, noise_traj, weight_para, time_index)
                 xmhe_traj    = opt_sol['state_traj_opt']
                 costate_traj = opt_sol['costate_traj_opt']
@@ -316,11 +312,6 @@ def Train(epsilon0, gmin0):
                 sum_loss += loss_track
                
                 it += 1
-            if flag == 1:
-                break
-        if flag == 1:
-            break
-
         if it >2:
             mean_loss = sum_loss / it
             mean_time = format(sum_time / it,'.2f')
