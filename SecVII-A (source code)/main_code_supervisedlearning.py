@@ -161,8 +161,8 @@ def Train(epsilon0, gmin0):
     threshold = 5e6
     Trained = []
     
-    # while delta_cost >= eps: #flag ==0
-    for k in range(1):
+    while delta_cost >= eps: #flag ==0
+    # for k in range(1):
         # flag = 1
         # Sum of loss
         sum_loss = 0.0
