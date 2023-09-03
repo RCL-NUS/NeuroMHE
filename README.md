@@ -49,7 +49,7 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 3. Run the Python file '**main_code_supervisedlearning.py**'. 
 4. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
    * Training: type 'train' without the quotation mark in the terminal.
-   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. Note that you can skip the training process and directly evaluate the performance using the trained neural network model '**Trained_model.pt**' to reproduce the RMSE results in the following table. The retained model is saved in the folder '**trained_data**'.
+   * Evaluation: type 'evaluate' without the quotation mark in the terminal. Subsequently, you will be prompted to select a trajectory for evaluation. There are a total of 13 agile trajectories within the complete NeuroBEM test dataset, as shown below. Note that you can skip the training process and directly evaluate the performance using the trained neural network model '**Trained_model.pt**' to reproduce the RMSE results presented in our paper. The retained model is saved in the folder '**trained_data**'.
 
 |                                         Trajectory Parameters of NeuroBEM Test Dataset                                           |
 :----------------------------------------------------------------------------------------------------------------------------------:
