@@ -100,20 +100,7 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
 
 3. Run the Python file '**T-RO-experiment-data-processing_22_Feb.py**' located in the directory '**SecVII-C (source code)/Evaluation in real-world experiment/Experiment Raw Data**' to generate the figures depicting the experimental results. A video demonstration showcasing the experiments is presented below.
 
-
-
-https://github.com/RCL-NUS/NeuroMHE/assets/70559054/7148d63b-0067-41d9-b3df-c4f2332be5a3
-
-
-
-
-
-
-
-
-
-
-
+https://github.com/RCL-NUS/NeuroMHE/assets/70559054/537c8e8d-8db3-4c14-8172-4c303a709d6a
       
 Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907. The primary code implementing our method in the onboard computer, along with other state-of-the-art robust flight controllers, is located in the Python file '**offb_py_v1_neuromhe.py**' (lines 504-659). This file can be found in the directory '**SecVII-C (source code)/Evaluation in real-world experiment/Code used in onboard computer**'.
 
