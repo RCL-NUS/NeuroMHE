@@ -84,7 +84,11 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
      
 3. Run the Python file '**plotting.py**' to plot figures and show the following animation demo.
 
-     https://user-images.githubusercontent.com/70559054/227720768-c70ea330-114e-4058-aea6-619bbdc3f379.mp4
+|                                                 Efficient Online Training Process                                                |
+:----------------------------------------------------------------------------------------------------------------------------------:
+![synthetic data training](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/209d4f1f-8abe-4db8-abf1-2dc920b6597f)
+
+
      
 ### SecVII-C
 1. Run the Python file '**main_code.py**' in the folder '**Training in simulation**' within the downloaded folder '**SecVII-C (source code)**'.
@@ -96,7 +100,16 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
 
 3. Run the Python file '**T-RO-experiment-data-processing_22_Feb.py**' located in the directory '**SecVII-C (source code)/Evaluation in real-world experiment/Experiment Raw Data**' to generate the figures depicting the experimental results. A video demonstration showcasing the experiments is presented below.
 
-      https://user-images.githubusercontent.com/70559054/227721900-338651dc-ce40-4288-ae8a-844ab37c50c1.mp4
+https://github.com/RCL-NUS/NeuroMHE/assets/70559054/3004d289-fc65-42b5-b6ef-37c489063adf
+
+
+
+
+
+
+
+
+
       
 Note that we modify the official v1.11.1 PX4 firmware to bypass the PX4's position and velocity controllers. The modified PX4 firmware is available at https://github.com/mamariomiamo/px4_modified/commit/d06d41265b8871c94f5fb110d99f8ec03d3c6907. The primary code implementing our method in the onboard computer, along with other state-of-the-art robust flight controllers, is located in the Python file '**offb_py_v1_neuromhe.py**' (lines 504-659). This file can be found in the directory '**SecVII-C (source code)/Evaluation in real-world experiment/Code used in onboard computer**'.
 
