@@ -100,7 +100,11 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
 
 3. Run the Python file '**T-RO-experiment-data-processing_22_Feb.py**' located in the directory '**SecVII-C (source code)/Evaluation in real-world experiment/Experiment Raw Data**' to generate the figures depicting the experimental results. A video demonstration showcasing the experiments is presented below.
 
-https://github.com/RCL-NUS/NeuroMHE/assets/70559054/3004d289-fc65-42b5-b6ef-37c489063adf
+
+
+https://github.com/RCL-NUS/NeuroMHE/assets/70559054/7148d63b-0067-41d9-b3df-c4f2332be5a3
+
+
 
 
 
