@@ -83,7 +83,7 @@ rmse_tz_bemnn  = round(sqrt(mean((ground_truth_t(:,3)-bemnn(:,35)).^2)),3);
 error_txy_bemnn= ground_truth_t(:,1:2)-bemnn(:,33:34);
 rmse_txy_bemnn = round(sqrt(mean(vecnorm(error_txy_bemnn,2,2).^2)),3); % vector-error for t_xy
 error_t_bemnn  = ground_truth_t(:,1:3)-bemnn(:,33:35);
-rmse_t_bemnn   = round(sqrt(mean(vecnorm(error_t_bemnn,2,2).^2)),3); % scalar-error for t_total
+rmse_t_bemnn   = round(sqrt(mean(vecnorm(error_t_bemnn,2,2).^2)),3); % vector-error for t_total
 
 %RMSE of NeuroMHE
 rmse_fx        = round(sqrt(mean((ground_truth_f(:,1)-disest_mhe(:,1)).^2)),3);
