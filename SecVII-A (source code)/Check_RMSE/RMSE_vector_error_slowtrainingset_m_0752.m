@@ -83,7 +83,7 @@ rmse_tz_bemnn  = round(sqrt(mean((ground_truth_t(:,3)-bemnn(:,35)).^2)),3);
 error_txy_bemnn= ground_truth_t(:,1:2)-bemnn(:,33:34);
 rmse_txy_bemnn = round(sqrt(mean(vecnorm(error_txy_bemnn,2,2).^2)),3); % vector-error for t_xy
 error_t_bemnn  = ground_truth_t(:,1:3)-bemnn(:,33:35);
-rmse_t_bemnn   = round(sqrt(mean(vecnorm(error_t_bemnn,2,2).^2)),3); % scalar-error for t_total
+rmse_t_bemnn   = round(sqrt(mean(vecnorm(error_t_bemnn,2,2).^2)),3); % vector-error for t_total
 
 %RMSE of NeuroMHE
 rmse_fx        = round(sqrt(mean((ground_truth_f(:,1)-disest_mhe(:,1)).^2)),3);
@@ -101,7 +101,7 @@ rmse_txy       = round(sqrt(mean(vecnorm(error_txy_mhe,2,2).^2)),3);
 error_t_mhe    = ground_truth_t(:,1:3)-disest_mhe(:,4:6);
 rmse_t         = round(sqrt(mean(vecnorm(error_t_mhe,2,2).^2)),3);
 
-disp('------------------------------RMSEs with scalar error (body frame and m=0.752kg)--------------------------------')
+disp('------------------------------RMSEs with vector error (body frame and m=0.752kg)--------------------------------')
 disp('----------------------------------------------------------------------------------------------------------------')
 disp('The selected trajectory:')
 disp(key)
