@@ -101,7 +101,7 @@ rmse_txy       = round(sqrt(mean(vecnorm(error_txy_mhe,2,2).^2)),3);
 error_t_mhe    = ground_truth_t(:,1:3)-disest_mhe(:,4:6);
 rmse_t         = round(sqrt(mean(vecnorm(error_t_mhe,2,2).^2)),3);
 
-disp('------------------------------RMSEs with scalar error (body frame and m=0.772kg)--------------------------------')
+disp('------------------------------RMSEs with vector error (body frame and m=0.772kg)--------------------------------')
 disp('----------------------------------------------------------------------------------------------------------------')
 disp('The selected trajectory:')
 disp(key)
