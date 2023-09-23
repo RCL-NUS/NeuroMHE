@@ -65,7 +65,7 @@ One advantage of NeuroBEM is that its accuracy only declines by 20% when the tra
 We evaluate the performance of NeuroMHE, trained on the '**slow training set**', in comparison to NeuroBEM on its complete test dataset. The comparative results in terms of RMSE are summarized in Table V of our paper.
 
 5. Check the RMSE results. In the folder '**Check_RMSE**',
-   * run the MATLAB file '**RMSE_vector_error_slowtrainingset.m**' to replicate the RMSE results presented in Table V of our paper.
+   * Run the MATLAB file '**RMSE_vector_error_slowtrainingset.m**' to replicate the RMSE results presented in Table V of our paper.
    * Additionally, we provide the RMSE results of NeuroMHE trained on the fast training set. To access these results, locate the MATLAB files '**RMSE_scalar_error_v1.m**' and '**RMSE_vector_error.m**' in the same folder and run them respectively.
    The file names themselves imply the distinction between these two datasets: the former is derived using scalar error (i.e., $e_{f}=\left | \sqrt{d_{f_x}^2+d_{f_y}^2+d_{f_z}^2} - \sqrt{ \hat d_{f_x}^2 + \hat d_{f_y}^2 + \hat d_{f_z}^2}\right |$) and expresses the force in the world frame, while the latter is attained through vector error (i.e., $e_{f}=\sqrt{(d_{f_x}-\hat d_{f_x})^2 + (d_{f_y}-\hat d_{f_y})^2 + (d_{f_z}-\hat d_{f_z})^2}$) and presents the force in the body frame. You can also run the corresponding Python files for the RMSE reproduction. These files have the same names as the MATLAB counterparts but end with '**.py**'.
    
