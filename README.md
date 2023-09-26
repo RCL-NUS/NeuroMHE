@@ -21,14 +21,14 @@ Please find out more details in our paper: https://arxiv.org/abs/2206.10397
 
 
 ## 1. Project Overview
-The project consists of three folders, which correspond to the three experiments in the paper that show the following four features of our method.
+The project consists of three folders, which correspond to the three experiments in the paper that show the following four advantages of our method.
 1. NeuroMHE enjoys computationally efficient training and significantly improves the force estimation performance as compared to a state-of-the-art estimator [[1]](#1).
 2. A stable NeuroMHE with a fast dynamic response can be trained directly from the trajectory tracking error using Algorithm 2 (i.e., the model-based policy gradient algorithm) .
 3. NeuroMHE exhibits superior estimation and robust control performance than a fixed-weighting MHE (DMHE) [[2]](#2) and a state-of-the-art adaptive controller [[3]](#3) for handling dynamic noise covariances.
 4. Finally, NeuroMHE is efficiently transferable to different challenging flight scenarios on a real quadrotor without extra parameter tuning, such as counteracting state-dependent cable forces and flying under the downwash flow.
-* SecVII-A (source code): *A comprehensive comparison with the state-of-the-art NeuroBEM estimator* on its real agile test dataset to show the first feature. 
-* SecVII-B (source code): *A robust trajectory tracking control scenario in simulation* to show the second and third features.
-* SecVII-C (source code): *Physical experiments on a real quadrotor* to show the fourth feature.
+* SecVII-A (source code): *A comprehensive comparison with the state-of-the-art NeuroBEM estimator* on its real agile test dataset to show the first advantage. 
+* SecVII-B (source code): *A robust trajectory tracking control scenario in simulation* to show the second and third advantages.
+* SecVII-C (source code): *Physical experiments on a real quadrotor* to show the fourth advantage.
 
 ## 2. Dependency Packages
 Please make sure that the following packages have already been installed before running the source code.
