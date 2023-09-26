@@ -85,7 +85,7 @@ class Controller:
         # Desired force in inertial frame for the norminal dynamics
         Fd = -np.matmul(self.kp, ep) - np.matmul(self.kv, ev) + self.m*self.g*self.ez + self.m*ref_a -df_Imh
         # Desired total thruster force fd
-        fd = np.inner(Fd.T, np.transpose(np.matmul(Rb, self.ez))) # norminal total thrust projected into the current body z axis
+        fd = np.inner(Fd.T, np.transpose(np.matmul(Rb, self.ez))) # total thrust projected into the current body z axis
         """
         Attitude controller
         """
