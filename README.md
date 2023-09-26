@@ -12,9 +12,9 @@ Please find out more details in our paper: https://arxiv.org/abs/2206.10397
 1. [Project Overview](#project-Overview)
 2. [Dependency Packages](#Dependency-Packages)
 3. [How to Use](#How-to-Use)
-      1. [SecVII-A(Accurate Estimation)](#SecVII-A)
-      2. [SecVII-B(Online Learning)](#SecVII-B)
-      3. [SecVII-C(Real-world Experiments)](#SecVII-C)
+      1. [SecVII-A (Accurate Estimation)](#SecVII-A (Accurate Estimation))
+      2. [SecVII-B (Online Learning)](#SecVII-B (Online Learning))
+      3. [SecVII-C (Real-world Experiments)](#SecVII-C (Real-world Experiments))
       4. [Applications to other robots](#Applications-to-other-robots)
 4. [Acknowledgement](#Acknowledgement)
 5. [Contact Us](#Contact-Us)
@@ -45,7 +45,7 @@ Please make sure that the following packages have already been installed before 
 ## 3. How to Use
 First and foremost, the training process for NeuroMHE is both efficient and straightforward to setup. The source code has been comprehensively annotated to facilitate ease of use. To reproduce the simulation results presented in the paper, simply follow the steps outlined below, sequentially, after downloading and decompressing all the necessary folders.
 
-### SecVII-A
+### SecVII-A (Accurate Estimation) 
 1. Download '**processed_data.zip**' and '**predictions.tat.xz**' from https://download.ifi.uzh.ch/rpg/NeuroBEM/. The former file is utilized for training NeuroMHE, whereas the latter serves the purpose of evaluation and comparison with NeuroBEM.
 2. Relocate the folder '**bem+nn**' from the decomprassed archive '**predictions.tat.xz**' to the downloaded folder '**SecVII-A (source code)**', and place the decompressed '**processed_data.zip**' within the folder '**SecVII-A (source code)**' as well.
 3. Run the Python file '**main_code_supervisedlearning.py**'. 
@@ -74,7 +74,7 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
    To demonstrate the mass verification, in the subfolder '**MATLAB_code_for_mass_verification**', run the MATLAB file '**residual_force_XXX.m**' where '**XXX**' represents the name of the test trajectory, such as '**3D_Circle_1**'. Additionally, we provide the RMSE values calculated with the initially reported mass solely for reference. To replicate these results, run the MATLAB file '**RMSE_vector_error_slowtrainingset_m_0752.m**'.
 
 
-### SecVII-B
+### SecVII-B (Online Learning)
 1. Run the Python file '**main_code.py**' in the downloaded folder '**SecVII-B (source code)**'.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
    * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
@@ -90,7 +90,7 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
 
 
      
-### SecVII-C
+### SecVII-C (Real-world Experiments)
 1. Run the Python file '**main_code.py**' in the folder '**Training in simulation**' within the downloaded folder '**SecVII-C (source code)**'.
 2. In the prompted terminal interface, you will be asked to select whether to train or evaluate NeuroMHE.
    * Training: type 'train' without the quotation mark in the terminal. Subsequently, you will be prompted to select whether to train NeuroMHE or DMHE.
