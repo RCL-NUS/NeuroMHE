@@ -41,7 +41,7 @@ class Controller:
         self.ex   = np.array([[1, 0, 0]]).T
         self.ey   = np.array([[0, 1, 0]]).T
         self.ez   = np.array([[0, 0, 1]]).T
-        # Gravitational acceleration in Singapore
+        # Gravitational acceleration
         self.g    = 9.81      
         self.ref  = SX.sym('ref', x.numel(), 1)
         self.dt   = dt_sample
