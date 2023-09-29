@@ -60,7 +60,7 @@ class quadrotor:
         self.ex    = vertcat(1, 0, 0)
         self.ey    = vertcat(0, 1, 0)
         self.ez    = vertcat(0, 0, 1)
-        # Gravitational acceleration in Singapore
+        # Gravitational acceleration 
         self.g     = 9.81
         # Polynomial coefficients of reference trajectory
         self.polyc = SX.sym('c',1,8)
