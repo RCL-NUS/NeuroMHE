@@ -316,7 +316,14 @@ if experiment == 'a':
             Gamma_dmhe[:,i:i+1] = np.reshape(g_dmhe_edu[1:3,0],(2,1))
             time += dt
             i += 1
-        
+
+        #----------------------------------------------------------
+        # Here the FIR filter is done offline (in the data-processing stage) for three reasons:
+        # 1. Its design is non-recursive, based on fast Fourier transform (FFT), which requires a long length of data horizon (N) to obtain good performance
+        # 2. The large horizon leads to highly computational costs, not suitable for online real-time computation
+        # 3. The manual tuning process is needed by trial and error, which typically demands a large amount of data 
+        #----------------------------------------------------------
+            
         Gt_lpf[0,:] = lfilter(taps, 1.0, Gt[0,:])
         Gt_lpf[1,:] = lfilter(taps, 1.0, Gt[1,:])
         Gt_lpf[2,:] = lfilter(taps, 1.0, Gt[2,:])
