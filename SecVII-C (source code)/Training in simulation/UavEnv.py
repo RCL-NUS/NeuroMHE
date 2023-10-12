@@ -393,7 +393,7 @@ class quadrotor:
         ref_s = np.reshape(np.vstack((ref_sx, ref_sy, ref_sz)), (3,1))
         return ref_p, ref_v, ref_a, ref_j, ref_s
 
-    # Augmented position dynamics used in MHE  
+    # Augmented velocity dynamics used in MHE  
     def uav_dyp(self,x,f,R_B,noise):
         # Velocity
         v      = vertcat(x[0,0], x[1,0], x[2,0])
