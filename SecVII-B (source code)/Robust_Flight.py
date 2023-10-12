@@ -185,6 +185,8 @@ class Controller:
  
     def L1_adaptive_law(self,x,z_hat):
         # Piecewise-constant adaptation law
+        # ----Note that B_R is defined to be slightly different from that in [3]---- 
+        # The sign of 1/m*Rb*ez is positive here whereas it is negative in [3] due to the different definitions of the positive direction of inertial frame.
         z  = np.array([[x[3,0],x[4,0],x[5,0],x[15,0],x[16,0],x[17,0]]]).T
         Rb = np.array([
             [x[6, 0], x[7, 0], x[8, 0]],
