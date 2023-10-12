@@ -337,6 +337,13 @@ class quadrotor:
         k4        = self.uav_dywb(self.xa + self.dt*k3, self.u, self.w)
         self.dymh = (k1 + 2*k2 + 2*k3 + k4)/6
         # Dynamics model used in the L1-AC state predictor
+        # Note that the signs in front of g*ez (in f_z) and 1/m*R_B*ez (in B_R) are different from those in [3].
+        # This is because the positive direction of inertial frame is different from that in [3].
+        """
+        [3] Wu, Z., Cheng, S., Ackerman, K.A., Gahlawat, A., Lakshmanan, A., Zhao, P. and Hovakimyan, N., 2022, May. 
+        L 1 Adaptive Augmentation for Geometric Tracking Control of Quadrotors. 
+        In 2022 International Conference on Robotics and Automation (ICRA) (pp. 1329-1336). IEEE.
+        """
         f_z       = vertcat(
                     -self.g*self.ez,
                     mtimes(LA.inv(self.J),-mtimes(omega_s, mtimes(self.J, self.omega)))
