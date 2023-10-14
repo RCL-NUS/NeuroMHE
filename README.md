@@ -57,6 +57,15 @@ First and foremost, the training process for NeuroMHE is both efficient and stra
 :----------------------------------------------------------------------------------------------------------------------------------:
 ![test dataset](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/afbdc415-288b-4938-8bc9-7b18c59d6f40)
 
+Please note that training performance may vary depending on the computer used. This variation arises from the gradient information's dependence on the MHE estimation trajectory, which is computed in the forward pass by a numerical solver. The solver's accuracy is influenced by its parameters and the computer's specifications. To uphold the training performance, we may slightly adjust the solver's parameters in the Python file '**Uav_mhe_supervisedlearning.py**'. Here are two training examples using different sets of solver parameters on different computers.
+        Training on a workstation       |      Training on a laptop
+:---------------------------------------------------------------:|:--------------------------------------------------------------:
+![Mean_loss_train_reproduction_photo](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/45c59927-40e7-4ec2-836f-5ad3fbdf72d7) | ![Mean_loss_train_reproduction_photo_mulaptop](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/88e0a8dc-3239-4932-9f4e-3bc7e86798df)
+opts['ipopt.tol']=1e-8 | opts['ipopt.tol']=1e-6
+opts['ipopt.max_iter']=3e3 | opts['ipopt.max_iter']=1e3
+opts['ipopt.acceptable_tol']=1e-7 | opts['ipopt.acceptable_tol']=1e-5
+
+
 One advantage of NeuroBEM is that its accuracy only declines by 20% when the training dataset encompasses a limited portion of the velocity-range space compared to the test dataset. To assess the performance of our NeuroMHE in this scenario, we select two 10-second-long segments for training: 1) one from an agile figure-8 trajectory, covering a wide velocity range of 0.05 m/s to 16.38 m/s, referred to as the 'fast training set'; 2) the other from a relatively slow wobbly circle trajectory, with a limited velocity range of 0.19 m/s to 5.18 m/s, referred to as the 'slow training set'. The following figures present a comparison of the velocity-range space in the world frame between the training sets and the partial test sets.
         Velocity-Range Space: Training Sets        |      Velocity-Range Space: Partial Test Sets
 :---------------------------------------------------------------:|:--------------------------------------------------------------:
