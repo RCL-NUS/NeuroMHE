@@ -85,7 +85,7 @@ class Controller:
         B_Rp = np.hstack((1/self.m*np.matmul(Rb,self.ex), 1/self.m*np.matmul(Rb,self.ey)))
         B_bar = np.hstack((B_R, B_Rp))
         a_s = np.array([[-1,-1,-1]]) 
-        A_s = np.diag(a_s[0]) # diagonal Hurwitz matrix, same as that used in [3]
+        A_s = np.diag(a_s[0]) # diagonal Hurwitz matrix
         PHI = np.matmul(LA.inv(A_s),(sLA.expm(self.dt*A_s)-np.identity(3)))
         mu  = np.matmul(sLA.expm(self.dt*A_s),(z_hat-z))
         sigma_hat  = -np.matmul(LA.inv(B_bar),np.matmul(LA.inv(PHI),mu))
