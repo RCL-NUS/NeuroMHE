@@ -387,7 +387,7 @@ class KF_gradient_solver:
         w_f, w_t    = 1, 10 # 1, 10 for n_start + 4000
         weight      = np.array([w_f, w_f, w_f, w_t, w_t, w_t])
         self.loss   = mtimes(mtimes(transpose(self.est_e), np.diag(weight)), self.est_e)
-        self.Kloss  = 15 # 1.25 for n_start + 4000
+        self.Kloss  = 15 # 1.25 for fast training set
     
     def q_2_rotation(self,q): # from body frame to inertial frame
         q = q/norm_2(q) # normalization
