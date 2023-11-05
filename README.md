@@ -6,7 +6,7 @@ The ***Neural Moving Horizon Estimation (NeuroMHE)*** is an auto-tuning and adap
 ![diagram_enlarged](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/49a00744-cef7-47c2-b83b-2b91c448967f)
 
 Please find out more details in our paper (accepted for publication in the IEEE Transactions on Robotics): https://arxiv.org/abs/2206.10397
-and YouTube video: https://youtu.be/wbJln0FU_ZQ
+and YouTube video: https://www.youtube.com/watch?v=L5SrVr5ha-k&t=39s
 
 
 ## Table of contents
