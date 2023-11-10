@@ -6,7 +6,7 @@ The ***Neural Moving Horizon Estimation (NeuroMHE)*** is an auto-tuning and adap
 ![diagram_enlarged](https://github.com/RCL-NUS/NeuroMHE/assets/70559054/49a00744-cef7-47c2-b83b-2b91c448967f)
 
 Please find out more details in 
-   * B. Wang, Z. Ma, S. Lai and L. Zhao, "Neural Moving Horizon Estimation for Robust Flight Control," in IEEE Transactions on Robotics, doi: 10.1109/TRO.2023.3331064. [IEEE Xplore](https://ieeexplore.ieee.org/document/10313083)
+   * our paper: B. Wang, Z. Ma, S. Lai and L. Zhao, "Neural Moving Horizon Estimation for Robust Flight Control," in IEEE Transactions on Robotics, doi: 10.1109/TRO.2023.3331064. [IEEE Xplore](https://ieeexplore.ieee.org/document/10313083), [arXiv](https://arxiv.org/abs/2206.10397)
    * YouTube video: https://www.youtube.com/watch?v=L5SrVr5ha-k
 
 ## Table of contents
