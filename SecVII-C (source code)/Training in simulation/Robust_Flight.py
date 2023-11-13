@@ -76,7 +76,7 @@ class Controller:
         # Trajectory tracking errors
         ep = p - ref_p
         ev = v - ref_v
-        # Desired force in inertial frame for the norminal dynamics
+        # Desired robust control force in inertial frame
         Fd = -np.matmul(self.kp, ep) - np.matmul(self.kv, ev) + self.m*self.g*self.ez + self.m*ref_a -df_Imh
         
         return Fd
