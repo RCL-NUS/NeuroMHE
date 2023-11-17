@@ -1,0 +1,48 @@
+import numpy as np
+
+rmse_pxy_neuromhe = np.load('RMSE_boxplot_data/Rmse_pxy_a.npy')
+rmse_pxy_dmhe     = np.load('RMSE_boxplot_data/Rmse_pxy_b.npy')
+rmse_pz_neuromhe  = np.load('RMSE_boxplot_data/Rmse_pz_a.npy')
+rmse_pz_dmhe      = np.load('RMSE_boxplot_data/Rmse_pz_b.npy')
+Rmse_pxy_neuromhe = np.zeros(len(rmse_pxy_neuromhe))
+Rmse_pxy_dmhe     = np.zeros(len(rmse_pxy_neuromhe))
+Rmse_pz_neuromhe  = np.zeros(len(rmse_pxy_neuromhe))
+Rmse_pz_dmhe      = np.zeros(len(rmse_pxy_neuromhe))
+for i in range(len(rmse_pxy_neuromhe)):
+    Rmse_pxy_neuromhe[i] = rmse_pxy_neuromhe[i]
+    Rmse_pxy_dmhe[i]     = rmse_pxy_dmhe[i]
+    Rmse_pz_neuromhe[i]  = rmse_pz_neuromhe[i]
+    Rmse_pz_dmhe[i]      = rmse_pz_dmhe[i]
+
+median_pxy_neuromhe = np.median(Rmse_pxy_neuromhe)
+median_pxy_dmhe     = np.median(Rmse_pxy_dmhe)
+median_pz_neuromhe  = np.median(Rmse_pz_neuromhe)
+median_pz_dmhe      = np.median(Rmse_pz_dmhe)
+print('median_p_xy_neuromhe=',median_pxy_neuromhe)
+print('median_p_xy_dmhe=',median_pxy_dmhe)
+print('median_pz_neuromhe=',median_pz_neuromhe)
+print('median_pz_dmhe=',median_pz_dmhe)
+Rmse_pxy_neuromhe_ordered = np.sort(Rmse_pxy_neuromhe)
+Rmse_pxy_dmhe_ordered = np.sort(Rmse_pxy_dmhe)
+Rmse_pz_neuromhe_ordered = np.sort(Rmse_pz_neuromhe)
+Rmse_pz_dmhe_ordered = np.sort(Rmse_pz_dmhe)
+# print('Rmse_pxy_neuromhe_ordered=',Rmse_pxy_neuromhe_ordered)
+# print('Rmse_pxy_dmhe_ordered=',Rmse_pxy_dmhe_ordered)
+# low_5per_neuromhe=np.percentile(Rmse_pxy_neuromhe_ordered, 5)
+# print('low_5per_neuromhe=',low_5per_neuromhe)
+# high_95per_neuromhe=np.percentile(Rmse_pxy_neuromhe_ordered, 95)
+# print('high_95per_neuromhe=',high_95per_neuromhe)
+remaining_Rmse_pxy_neuromhe = np.delete(Rmse_pxy_neuromhe_ordered,obj=[0,1,2,3,4,95,96,97,98,99])
+remaining_Rmse_pxy_dmhe = np.delete(Rmse_pxy_dmhe_ordered,obj=[0,1,2,3,4,95,96,97,98,99])
+remaining_Rmse_pz_neuromhe = np.delete(Rmse_pz_neuromhe_ordered,obj=[0,1,2,3,4,95,96,97,98,99])
+remaining_Rmse_pz_dmhe = np.delete(Rmse_pz_dmhe_ordered,obj=[0,1,2,3,4,95,96,97,98,99])
+# print('remaining_Rmse_pxy_neuromhe=',remaining_Rmse_pxy_neuromhe)
+# print('remaining_Rmse_pxy_dmhe=',remaining_Rmse_pxy_dmhe)
+median_pxy_neuromhe_remaining = np.median(remaining_Rmse_pxy_neuromhe)
+print('median_p_xy_neuromhe_remaining=',median_pxy_neuromhe_remaining)
+median_pxy_dmhe_remaining = np.median(remaining_Rmse_pxy_dmhe)
+print('median_p_xy_dmhe_remaining=',median_pxy_dmhe_remaining)
+median_pz_neuromhe_remaining = np.median(remaining_Rmse_pz_neuromhe)
+print('median_pz_neuromhe_remaining=',median_pz_neuromhe_remaining)
+median_pz_dmhe_remaining = np.median(remaining_Rmse_pz_dmhe)
+print('median_pz_dmhe_remaining=',median_pz_dmhe_remaining)
