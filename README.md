@@ -92,7 +92,7 @@ We evaluate the performance of NeuroMHE, trained on the '**slow training set**',
 
      ![evaluation_mode](https://user-images.githubusercontent.com/70559054/227720537-e2910ce5-7128-4bed-864b-848c787a7413.png)
      
-3. Run the Python file '**plotting.py**' to reproduce the figures in Section VII-B and show the following animation demo.
+3. Run the Python file '**plotting.py**' to reproduce the figures in Section VII-B of our paper and show the following animation demo.
 
 |                                                 Efficient Online Training Process                                                |
 :----------------------------------------------------------------------------------------------------------------------------------:
