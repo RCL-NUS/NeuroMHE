@@ -797,7 +797,7 @@ def Evaluate():
         #     df_z = df[2,0]
         #     if df_z > -10:
         #         flag = 1 
-        if euler_max > 150 and k>400: # stop the simulation to prevent the potential instability
+        if euler_max > 150 and k>400: # stop the simulation to prevent the potential instability caused by some numerical issue
             flag2 = 1
         print('sample=',k,'ref_p=',ref_p.T,'act_p=',p.T,'norm of p=',LA.norm(p),'Attitude=',Euler.T,'Angular rate=',omega.T,'Angle_max=',euler_max)
         fx_max0 = max(dis_f[0,:])
