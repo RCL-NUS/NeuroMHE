@@ -1027,7 +1027,7 @@ plt.show()
 # # -------------boxplot over 100 episode----------------#
 """
 Outliers occur in the extreme cases where the maximum vector norm of the quadrotor's Euler angle reaches the threshold (See line 800 in 'main_code.py').
-In these cases, the simulation is stopped at 4s and the RMSEs can be either very small (due to the incomplete trajectory in the beginning stage) 
+In these cases (less than 10% of the total episodes), the simulation is stopped at 4s and the RMSEs can be either very small (due to the incomplete trajectory in the beginning stage) 
 or relatively large (due to the nearly unstable simulation caused by some numerical issue).
 Please note that the removal of the outliers from the figure in our paper does not affect the results and conclusion of SecVII-B2.
 This is because the median value shown in the bottom of each box is computed using all the data (See line 1129, 1211, and 1286 in this file). 
