@@ -19,7 +19,7 @@ class Controller:
     Geometric flight controller on SE(3) [1][2]
     [1] Lee, T., Leok, M. and McClamroch, N.H., 2010. 
         Control of complex maneuvers for a quadrotor UAV using geometric methods on SE (3). 
-        arXiv preprint arXiv:1003.2005.
+        arXiv preprint arXiv:1003.2005v2.
     [2] Lee, T., Leok, M. and McClamroch, N.H., 2010, December. 
         Geometric tracking control of a quadrotor UAV on SE (3). 
         In 49th IEEE conference on decision and control (CDC) (pp. 5420-5425). IEEE.
