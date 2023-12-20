@@ -12,6 +12,7 @@ Please find out more details in
 ## Citation
 If you find this work helpful in your publications, we would appreciate citing our paper (published in IEEE Transactions on Robotics)
 
+```
 @ARTICLE{10313083,
   author={Wang, Bingheng and Ma, Zhengtian and Lai, Shupeng and Zhao, Lin},
   journal={IEEE Transactions on Robotics}, 
@@ -21,6 +22,7 @@ If you find this work helpful in your publications, we would appreciate citing o
   number={},
   pages={639-659},
   doi={10.1109/TRO.2023.3331064}}
+ ```
 
 
 ## Table of contents
