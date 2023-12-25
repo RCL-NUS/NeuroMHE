@@ -9,6 +9,8 @@ Please find out more details in
    * our paper "Neural Moving Horizon Estimation for Robust Flight Control," [IEEE Xplore](https://ieeexplore.ieee.org/document/10313083), [arXiv](https://arxiv.org/abs/2206.10397)
    * YouTube video: https://www.youtube.com/watch?v=L5SrVr5ha-k
 
+For learning estimation policy using the second-order trust-region method, kindly refer to our another respository https://github.com/BinghengNUS/TR-NeuroMHE
+
 ## Citation
 If you find this work helpful in your publications, we would appreciate citing our paper (published in IEEE T-RO)
 
