@@ -160,7 +160,7 @@ class Controller:
 
     # Disturbance model 
     def dis(self,p,L0):
-        K_stiff = 50 # stiffness of the elastic band
+        K_stiff = 50 # stiffness of the elastic band, 60 is used for training. The stiffness is estimated to be between 50 and 60, as manually measured by a low-cost, spring-loaded force sensor.
         p_offset = np.array([[0,0,0.175]]).T
         p_band   = p - p_offset
         dir_band = -p_band/LA.norm(p_band)
