@@ -676,6 +676,8 @@ def Evaluate():
 
     if not os.path.exists("trained_data"):
         os.makedirs("trained_data")
+    if not os.path.exists("velocity_space"):
+        os.makedirs("velocity_space")
     
     np.save('trained_data/Time_'+str(key), Time)
     np.save('trained_data/Tunable_para_'+str(key), Tunable_para)
