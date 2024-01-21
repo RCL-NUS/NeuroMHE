@@ -284,11 +284,11 @@ if experiment == 'a':
         Acc_b_ned   = np.zeros((3,len(acc_x)))
         for k in range(len(acc_x)):
             Acc_b_ned[:,k:k+1] = np.array([[acc_x[k],acc_y[k],acc_z[k]]]).T
-        # load the quaternion
-        Q0 = dataframe_d['q[0]']
-        Q1 = dataframe_d['q[1]']
-        Q2 = dataframe_d['q[2]']
-        Q3 = dataframe_d['q[3]']
+        # load the quaternion (Kindly refer to https://docs.px4.io/main/en/log/plotjuggler_log_analysis.html for the definition of quaternion data in log)
+        Q0 = dataframe_d['q[0]'] # w
+        Q1 = dataframe_d['q[1]'] # x
+        Q2 = dataframe_d['q[2]'] # y
+        Q3 = dataframe_d['q[3]'] # z
         
         Gt = np.zeros((3,len(g_r_dmhe)-n_start))
         Gt_lpf = np.zeros((4,len(g_r_dmhe)-n_start))
