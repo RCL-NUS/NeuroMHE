@@ -90,8 +90,8 @@ class Controller:
         Attitude controller
         """
         # Construct the desired rotation matrix (from body frame to inertial frame)
-        b3c = Fd/LA.norm(Fd)
-        b2c = np.matmul(self.skew_sym(b3c), b1_d)/LA.norm(np.matmul(self.skew_sym(b3c), b1_d))
+        b3c = Fd/LA.norm(Fd) # b3c = -A/norm(A), so A = -Fd
+        b2c = np.matmul(self.skew_sym(b3c), b1_d)/LA.norm(np.matmul(self.skew_sym(b3c), b1_d)) # b2c = -C/norm(C), so C = skew_sym(b1_d)@b3c
         b1c = np.matmul(self.skew_sym(b2c), b3c)
         Rbd = np.hstack((b1c, b2c, b3c))
         R_B_dh = np.array([[Rbd[0,0], Rbd[0,1], Rbd[0,2], Rbd[1,0], Rbd[1,1], Rbd[1,2], Rbd[2,0], Rbd[2,1], Rbd[2,2]]]).T
