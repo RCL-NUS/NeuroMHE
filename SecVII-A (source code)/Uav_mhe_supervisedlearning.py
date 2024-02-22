@@ -112,7 +112,7 @@ class MHE:
         for i in range(len(x_hat)): # convert an array to a list
             X_hatmh += [x_hat[i,0]]
         w0 += X_hatmh
-        lbw+= self.n_state*[-1e20] # value less than or equal to -1e19 stands for no lower bound
+        lbw+= self.n_state*[-1e20] # value less than or equal to -1e19 stands for no lower bound. See IPOPT documentation
         ubw+= self.n_state*[1e20] # value greater than or equal to 1e19 stands for no upper bound
         # Formulate the NLP
         # time_mhe = self.N*self.DT
