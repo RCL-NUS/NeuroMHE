@@ -225,7 +225,7 @@ class MHE:
         assert hasattr(self, 'dJ_fn'), "Define the cost dynamics function first!"
         # Define co-state variables
         self.costate      = SX.sym('lambda', self.n_state, 1) # lambda at k
-        self.cos_pre      = SX.sym('lampre', self.n_state, 1) # lambda at k-1, in fact, it will not appear in all the 2nd-derivate terms
+        self.cos_pre      = SX.sym('lampre', self.n_state, 1) # lambda at k-1, in fact, it will not appear in all the 2nd-derivative terms
 
         # Differentiate the dynamics to get the system Jacobian
         self.F            = jacobian(self.ModelDyn, self.state)
