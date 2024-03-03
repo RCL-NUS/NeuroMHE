@@ -454,7 +454,7 @@ class MHE:
 
         # Second-order derivative of arrival Lagrangian, k=t-N
         self.ddL0xp       = jacobian(self.dL0x, self.weight_para)
-        self.ddL0xp_fn    = Function('ddL0xw', [self.state, self.costate, self.ctrl, self.noise, self.measurement, self.weight_para, self.horizon1, self.index], [self.ddL0xp], ['x0', 'c0', 'u0', 'n0', 'm0', 'tp', 'h1', 'ind'], ['ddL0xpf'])
+        self.ddL0xp_fn    = Function('ddL0xp', [self.state, self.costate, self.ctrl, self.noise, self.measurement, self.weight_para, self.horizon1, self.index], [self.ddL0xp], ['x0', 'c0', 'u0', 'n0', 'm0', 'tp', 'h1', 'ind'], ['ddL0xpf'])
         self.ddLbar0xx    = jacobian(self.dLbar0x, self.state)
         self.ddLbar0xx_fn = Function('ddL0xx', [self.state, self.costate, self.ctrl, self.noise, self.measurement, self.weight_para, self.horizon1, self.index], [self.ddLbar0xx], ['x0', 'c0', 'u0', 'n0', 'm0', 'tp', 'h1', 'ind'], ['ddL0xxf'])
         self.ddLbar0xw    = jacobian(self.dLbar0x, self.noise)
