@@ -584,7 +584,7 @@ class KF_gradient_solver:
             if k < self.horizon-2:
                 S_k1   = np.matmul(np.matmul(matddLxw[k+1], LA.inv(matddLww[k+1])), np.transpose(matddLxw[k+1]))-matddLxx[k+1] # S_k1: S_{k+1}
             else:
-                S_k1   = -matddLxx[k+1] # matddLxw_{t-N} does not exist
+                S_k1   = -matddLxx[k+1] # matddLxw_{t} does not exist
             S[k+1]    = S_k1
             C_k1      = np.matmul(LA.inv(np.identity(self.n_xmhe)-np.matmul(P_k1, S[k+1])), P_k1)
             C[k+1]    = C_k1
