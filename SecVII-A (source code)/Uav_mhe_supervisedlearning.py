@@ -497,7 +497,7 @@ class KF_gradient_solver:
         dp = np.zeros((1, self.n_para))
         # Initialize the loss
         loss_track = 0
-        # Positive coefficient in the loss
+        
         for t in range(self.horizon):
             x_mhe = xmhe_traj[t, :]
             x_mhe = np.reshape(x_mhe, (self.n_xmhe, 1))
