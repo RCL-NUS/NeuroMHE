@@ -450,6 +450,8 @@ def Train(epsilon0, gmin0, tunable_para0):
     
     # iteration = np.load('K_iteration.npy')
     # loss      = np.load('Loss.npy')
+    if not os.path.exists("plots_in_paper"):
+        os.makedirs("plots_in_paper")
     plt.figure(1)
     plt.plot(K_iteration, Loss, linewidth=1.5, marker='o')
     plt.xlabel('Training episodes')
