@@ -206,7 +206,7 @@ def Train(epsilon0, gmin0):
             ground_truth = []  
             flag = 0
             vx, vy, vz = [],[],[]
-            for j in range(n_start,n_start+4000): # n_start + 4000: these data points covers a wide range of velocity from 0.05 to 16.38 m/s for the figure-8 trajectory; 
+            for j in range(n_start,n_start+4000): # n_start + 4000: these data points covers a limited range of velocity from 0.05 to 5 m/s for the circle trajectory; 
                 # Take the measurements from the dataset
                 v_B = np.array([[velx_seq[n*j], vely_seq[n*j], velz_seq[n*j]]]).T
                 q = np.array([[qw_seq[n*j], qx_seq[n*j], qy_seq[n*j], qz_seq[n*j]]]).T
