@@ -362,11 +362,11 @@ def Train(epsilon0, gmin0):
     # Loss function
     if not os.path.exists("plots_testset"):
         os.makedirs("plots_testset")
-    if not os.path.exists("velocity_space_TR_NeuroMHE"):
-        os.makedirs("velocity_space_TR_NeuroMHE")
-    np.save('velocity_space_TR_NeuroMHE/vx_train',vx)
-    np.save('velocity_space_TR_NeuroMHE/vy_train',vy)
-    np.save('velocity_space_TR_NeuroMHE/vz_train',vz)
+    if not os.path.exists("velocity_space_NeuroMHE"):
+        os.makedirs("velocity_space_NeuroMHE")
+    np.save('velocity_space_NeuroMHE/vx_train',vx)
+    np.save('velocity_space_NeuroMHE/vy_train',vy)
+    np.save('velocity_space_NeuroMHE/vz_train',vz)
     # Mean_loss = np.load('trained_data/Mean_loss.npy')
     # Dim_mean_loss = np.size(Mean_loss)
     
