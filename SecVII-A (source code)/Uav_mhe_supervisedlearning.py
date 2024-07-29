@@ -183,7 +183,7 @@ class MHE:
 
         # Solve the NLP
         sol = solver(x0=w0, lbx=lbw, ubx=ubw, lbg=lbg, ubg=ubg)
-        w_opt = sol['x'].full().flatten() # convert to a row array
+        w_opt = sol['x'].full().flatten() # convert to a list
 
         # Take the optimal noise, state, and costate
         sol_traj1 = np.concatenate((w_opt, self.n_noise * [0])) # sol_traj1 = [x0,w0,x1,w1,...,xk,wk,...xn-1,wn-1,xn,wn] note that we added a wn
