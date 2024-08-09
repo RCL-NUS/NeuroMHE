@@ -196,15 +196,15 @@ class MHE:
 
         for i in range(self.horizon - 1, 0, -1):
             curr_s      = state_traj_opt[i, :]
-            curr_n      = noise_traj_opt[i-1,:]
+            curr_n      = noise_traj_opt[i-1,:] # its index should be i and begin from self.horizon - 2. 
             curr_m      = Y[len(Y) - self.horizon + i]
-            lembda_curr = np.reshape(costate_traj_opt[i, :], (self.n_state,1))
+            lembda_curr = np.reshape(costate_traj_opt[i, :], (self.n_state,1)) # computation of lembda should have been a piece-wise function like the code in the function of 'GradientSolver_general'
             mat_F       = self.F_fn(x0=curr_s, n0=curr_n)['Ff'].full()
             mat_H       = self.H_fn(x0=curr_s)['Hf'].full()
             R_curr      = self.R_fn(tp=weight_para, h1=self.horizon - 1, ind=i)['R_fnf'].full()
             y_curr      = self.y_fn(x0=curr_s)['yf'].full()
             lembda_pre  = np.matmul(np.transpose(mat_F), lembda_curr) + np.matmul(np.matmul(np.transpose(mat_H), R_curr), (curr_m - y_curr))
-            costate_traj_opt[(i - 1):i, :] = np.transpose(lembda_pre)
+            costate_traj_opt[(i - 1):i, :] = np.transpose(lembda_pre) # Actually, this kind of costate is NOT used in training. We use 'costate_traj_ipopt' instead.
         
         # Alternatively, we can compute the co-states (Lagrange multipliers) from IPOPT itself. These two co-state trajectories are very similar to each other!
         lam_g = sol['lam_g'].full().flatten() # Lagrange multipilers for bounds on g
