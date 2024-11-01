@@ -145,7 +145,7 @@ We thank Leonard Bauersfeld for the help in using the flight dataset of NeuroBEM
 
 ## 5. Contact Us
 If you encounter a bug in your implementation of the code, please do not hesitate to inform me.
-* Name: Mr. Bingheng Wang
+* Name: Dr. Bingheng Wang
 * Email: wangbingheng@u.nus.edu
 
 ## References
