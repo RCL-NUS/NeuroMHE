@@ -188,13 +188,13 @@ def Train(epsilon0, gmin0):
             q0         = np.array([[qw_seq[n_start], qx_seq[n_start], qy_seq[n_start], qz_seq[n_start]]]).T
             w_B0       = np.array([[angvelx_seq[n_start], angvely_seq[n_start], angvelz_seq[n_start]]]).T
             R_B0       = Quaternion2Rotation(q0)  
-            v_I0       = np.matmul(R_B0, v_B0)
+            v_I0       = np.matmul(R_B0, v_B0) # world frame
             acc        = np.array([[accx_seq[n_start], accy_seq[n_start], accz_seq[n_start], angaccx_seq[n_start], angaccy_seq[n_start], angaccz_seq[n_start]]]).T
             df_t, dt_t = GroundTruth(w_B0, acc, uav.m, uav.J)
-            df_t       = np.matmul(R_B0, df_t)
-            df_B0      = np.reshape(df_t, (3, 1))
+            df_t       = np.matmul(R_B0, df_t) # world frame
+            df_I0      = np.reshape(df_t, (3, 1)) 
             dt_B0      = np.reshape(dt_t, (3, 1))
-            x_hat0     = np.vstack((v_I0,df_B0, w_B0, dt_B0)) # in training, we set the inital guess to be the ground truth
+            x_hat0     = np.vstack((v_I0,df_I0, w_B0, dt_B0)) # in training, we set the inital guess to be the ground truth
             x_hat      = x_hat0 # initial guess in the MHE arrival cost
             xmhe_traj  = x_hat0.T
             noise_traj = np.zeros((1,6))
@@ -212,7 +212,7 @@ def Train(epsilon0, gmin0):
                 q = np.array([[qw_seq[n*j], qx_seq[n*j], qy_seq[n*j], qz_seq[n*j]]]).T
                 w_B = np.array([[angvelx_seq[n*j], angvely_seq[n*j], angvelz_seq[n*j]]]).T
                 R_B = Quaternion2Rotation(q)  
-                v_I = np.matmul(R_B, v_B) 
+                v_I = np.matmul(R_B, v_B) # world frame
                 vx     += [v_I[0, 0]]
                 vy     += [v_I[1, 0]]
                 vz     += [v_I[2, 0]]
@@ -271,9 +271,9 @@ def Train(epsilon0, gmin0):
                 dt_Bmh = np.reshape(dt_Bmh, (3, 1))
                 
                 # Ground truth list
-                acc = np.array([[accx_seq[n*j], accy_seq[n*j], accz_seq[n*j], angaccx_seq[n*j], angaccy_seq[n*j], angaccz_seq[n*j]]]).T
-                df_t, dt_t = GroundTruth(w_B, acc, uav.m, uav.J)
-                df_t       = np.matmul(R_B, df_t) # transformed to the world frame
+                acc = np.array([[accx_seq[n*j], accy_seq[n*j], accz_seq[n*j], angaccx_seq[n*j], angaccy_seq[n*j], angaccz_seq[n*j]]]).T # body frame from IMU
+                df_t, dt_t = GroundTruth(w_B, acc, uav.m, uav.J) # in body frame
+                df_t       = np.matmul(R_B, df_t) # transformed to the world frame for training
                 print('Trained=', n_ep, 'sample=', it, 'Dis_x=', df_t[0, 0], 'df_Imh_x=', df_Imh[0, 0], 'Dis_y=', df_t[1, 0], 'df_Imh_y=', df_Imh[1, 0], 'Dis_z=', df_t[2, 0],
                         'df_Imh_z=', df_Imh[2, 0],'norm of v_I=',LA.norm(v_I))
                 
@@ -511,9 +511,9 @@ def Evaluate():
     w_B0    = np.array([[angvelx_seq[n_start], angvely_seq[n_start], angvelz_seq[n_start]]]).T # in evaluation, the initial guess of the angular rate is set to be the measurement
     R_B0    = Quaternion2Rotation(q0)  
     v_I0    = np.matmul(R_B0, v_B0) # in evaluation, the initial guess of the linear velocity is set to be the measurement
-    df_B0   = np.array([[0,0, Sys_para[0]*9.81]]).T # in evaluation, we set the initial guess of the force to be the gravity vector as the quadrotor maneuver starts from a near hovering state
+    df_I0   = np.array([[0,0, Sys_para[0]*9.81]]).T # in evaluation, we set the initial guess of the force to be the gravity vector as the quadrotor maneuver starts from a near hovering state
     dt_B0   = np.zeros((3,1)) # in evaluation, we set the initial guess of the torque to be zero as the quadrotor maneuver starts from a near hovering state
-    x_hat0  = np.vstack((v_I0,df_B0, w_B0, dt_B0))
+    x_hat0  = np.vstack((v_I0,df_I0, w_B0, dt_B0))
     x_hat = x_hat0
     xmhe_traj = x_hat.T
     
@@ -524,7 +524,7 @@ def Evaluate():
         q       = np.array([[qw_seq[n*j], qx_seq[n*j], qy_seq[n*j], qz_seq[n*j]]]).T
         w_B     = np.array([[angvelx_seq[n*j], angvely_seq[n*j], angvelz_seq[n*j]]]).T
         R_B     = Quaternion2Rotation(q)
-        v_I     = np.matmul(R_B, v_B)
+        v_I     = np.matmul(R_B, v_B) # world frame
         measurement = np.vstack((v_I, w_B)) 
         Y      += [measurement]
         q_seq  += [q]
@@ -557,12 +557,12 @@ def Evaluate():
                 x_hat[ix,0] = xmhe_traj[1, ix]
 
         # MHE estimates
-        df_Imh   = np.transpose(xmhe_traj[-1, 3:6])
+        df_Imh   = np.transpose(xmhe_traj[-1, 3:6]) # estimate in world frame
         df_Imh   = np.reshape(df_Imh, (3, 1))
-        df_Bmh   = np.reshape(np.matmul(R_B.T,df_Imh),(3,1))
+        df_Bmh   = np.reshape(np.matmul(R_B.T,df_Imh),(3,1)) # body frame
         dt_Bmh   = np.transpose(xmhe_traj[-1, 9:12])
         dt_Bmh   = np.reshape(dt_Bmh, (3, 1))
-        wrench_mhe = np.vstack((df_Bmh, dt_Bmh))
+        wrench_mhe = np.vstack((df_Bmh, dt_Bmh)) # transformed into body frame for consistency with NeuroBEM
         fx_mhe  += [wrench_mhe[0,0]]
         fy_mhe  += [wrench_mhe[1,0]]
         fz_mhe  += [wrench_mhe[2,0]]
