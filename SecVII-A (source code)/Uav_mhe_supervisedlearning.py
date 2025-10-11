@@ -408,9 +408,9 @@ class KF_gradient_solver:
         S       = self.horizon*[np.zeros((self.n_xmhe, self.n_xmhe))]
         T       = self.horizon*[np.zeros((self.n_xmhe, self.n_xmhe))]
         F_bar   = (self.horizon-1)*[np.zeros((self.n_xmhe, self.n_xmhe))]
-        if self.horizon == 1: 
+        if self.horizon == 1: # initial gradient at t=0, full-information estimation
             S_k = -matddLxx[0]
-            T_k = -matddLxp[0]
+            T_k = -matddLxp[0] # We overlook the explicitly partial derivative of Lx w.r.t. P matrix in the arrival cost, but its effect is negligible.
         else:
             S_k = np.matmul(np.matmul(matddLxw[0], LA.inv(matddLww[0])), np.transpose(matddLxw[0]))-matddLxx[0]
             T_k = np.matmul(np.matmul(matddLxw[0], LA.inv(matddLww[0])), matddLwp[0])-matddLxp[0]
