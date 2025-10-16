@@ -302,7 +302,7 @@ def Train(epsilon0, gmin0):
                     print('Trained=', n_ep, 'sample=', it, 'number of nn paras=', params, 'percentage=',params/25e3,'norm_dldw=', new_norm)
                     print('Trained=', n_ep, 'sample=', it, 'loss=', loss_track, 'mean_loss0=', mean_loss0,'epsilon=', epsilon, 'gmin=', gmin, 'dldw[12]=',dldw[0,12],'dldw[18]=',dldw[0,18] )
                     loss_nn_p = model_QR.myloss(model_QR(measurement), dldp)
-                    optimizer_p = torch.optim.Adam(model_QR.parameters(), lr=lr_nn)
+                    optimizer_p = torch.optim.Adam(model_QR.parameters(), lr=lr_nn) # it is recommended to move this line outside the while-loop to robustify and speed up training
                     model_QR.zero_grad()
                     loss_nn_p.backward() 
                     optimizer_p.step()# comment this line for recording the velocity
