@@ -99,7 +99,7 @@ class Controller:
         v_prev = np.array([[x_prev[3,0],x_prev[4,0],x_prev[5,0]]]).T
         a      = (v-v_prev)/self.dt # acclearation based on 1st-order backward differentiation
         time_const  = 0.025 # used in the low-pass filter for the acceleration
-        a_lpf  = self.lowpass_filter(time_const,a,a_lpf_prev)
+        a_lpf  = self.lowpass_filter(time_const,a,a_lpf_prev) # This is 'finite-difference then low-pass'. Another option is 'low-pass differentiator', which may be more numerically stable.
         j      = (a_lpf-a_lpf_prev)/self.dt # jerk based on 1st-order backward differentiation
         time_const  = 0.03 # used in the low-pass filter for the jerk
         j_lpf  = self.lowpass_filter(time_const,j,j_lpf_prev)
