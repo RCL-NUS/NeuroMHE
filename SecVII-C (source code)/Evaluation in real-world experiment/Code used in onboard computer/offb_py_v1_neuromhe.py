@@ -617,7 +617,7 @@ if __name__ == '__main__':
             f = fd # feed the control command directly to the MHE estimator
             #-----------control force normalization (required by the PX4 lower-level controller)------------#
             mass_for_normalization = 1.25 #1.1, larger this value, larger the control gain, unit: kg
-            # force in inertial NED
+            # force in inertial ENU (MAVROS will transform it into NED)
             scale_factor = 4 # 4 motors
             fx = Fd[0, 0]/mass_for_normalization/(g*scale_factor)
             fy = Fd[1, 0]/mass_for_normalization/(g*scale_factor)
