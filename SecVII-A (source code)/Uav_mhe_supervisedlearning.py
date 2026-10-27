@@ -170,12 +170,12 @@ class MHE:
 
         # Create an NLP solver
         opts = {}
-        opts['ipopt.tol'] = 1e-6
+        opts['ipopt.tol'] = 1e-8
         opts['ipopt.print_level'] = 0
         opts['print_time'] = 0
         opts['ipopt.warm_start_init_point']='yes'
-        opts['ipopt.max_iter']=1e3
-        opts['ipopt.acceptable_tol']=1e-5
+        opts['ipopt.max_iter']=3e3
+        opts['ipopt.acceptable_tol']=1e-7
         opts['ipopt.mu_strategy']='adaptive'
         # opts = {'ipopt.print_level': print_level, 'ipopt.sb': 'yes', 'print_time': print_level}
         prob = {'f': J, 'x': vertcat(*w), 'g': vertcat(*g)}
