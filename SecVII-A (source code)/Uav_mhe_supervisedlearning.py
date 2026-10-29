@@ -446,7 +446,7 @@ class KF_gradient_solver:
             else:
                 T_k1  = -matddLxp[k+1]
             T[k+1]    = T_k1
-            X_KFk1    = np.matmul((np.identity(self.n_xmhe)+np.matmul(C_k1, S_k1)), X_kk1) + np.matmul(C_k1, T_k1)
+            X_KFk1    = np.matmul((np.identity(self.n_xmhe)+np.matmul(C[k+1], S[k+1])), X_kk1) + np.matmul(C[k+1], T[k+1])
             X_KF[k+1] = X_KFk1
      
         """-------------------------Backward costate gradient--------------------------"""
