@@ -252,7 +252,7 @@ def Train(epsilon0, gmin0):
                 if time_index <= horizon:
                     M = np.zeros((len(x_hat), D_out)) # for the full-information estimator, x^hat_{t-N} = x^hat_{0} which is an initial guess independent of the tuning parameters
                 else:
-                    M = X_opt[1] # MHE estimate at t-N which is the second term in the estimate trajectory made at t-1 {from t-N-1 to t-1}
+                    M = X_opt[1] # MHE estimate at t-N which is the second term in the estimate trajectory made at t-1 {from t-N-1 to t-1}. Note: set M to zero when optimizer_p is outside the while-loop for more stable learning!
 
                 start_time = TM.time()
                 gra_opt = uavNMHE.GradientSolver_general(M, matF, matG, matddLxx, matddLxp, matddLxw, matddLww, matddLwp, P0)
@@ -302,7 +302,7 @@ def Train(epsilon0, gmin0):
                     print('Trained=', n_ep, 'sample=', it, 'number of nn paras=', params, 'percentage=',params/25e3,'norm_dldw=', new_norm)
                     print('Trained=', n_ep, 'sample=', it, 'loss=', loss_track, 'mean_loss0=', mean_loss0,'epsilon=', epsilon, 'gmin=', gmin, 'dldw[12]=',dldw[0,12],'dldw[18]=',dldw[0,18] )
                     loss_nn_p = model_QR.myloss(model_QR(measurement), dldp)
-                    optimizer_p = torch.optim.Adam(model_QR.parameters(), lr=lr_nn) # it would be better to move this line outside the while-loop to robustify and speed up training. In that case, it is highly recommended to re-tune the IPOPT parameters!
+                    optimizer_p = torch.optim.Adam(model_QR.parameters(), lr=lr_nn) # it would be better to move this line outside the while-loop to robustify and speed up training. 
                     model_QR.zero_grad()
                     loss_nn_p.backward() 
                     optimizer_p.step()# comment this line for recording the velocity
