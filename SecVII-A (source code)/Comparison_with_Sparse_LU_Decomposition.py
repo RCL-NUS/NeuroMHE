@@ -14,6 +14,7 @@ from numpy import linalg as LA
 import numpy as np
 from scipy import sparse
 from scipy.sparse.linalg import splu
+from python_sparse_lu import splu_python
 
 class MHE:
     def __init__(self, horizon, dt_sample, r11):
@@ -493,6 +494,29 @@ class KF_gradient_solver:
         lu = splu(sparse.csc_matrix(kkt_matrix))
         gradient_trajectory = lu.solve(-rhs)
         return gradient_trajectory
+
+    def GradientSolver_sparse_python(self, kkt_matrix, rhs):
+        """Solve KKT @ gradient = -rhs using Python-controlled sparse LU.
+
+        Both a fresh factorization and all RHS triangular solves occur
+        inside this call. The input/output ordering is the same as for
+        GradientSolver_sparse. No compiled factorization/solve is called;
+        numerical kernels are basic NumPy arithmetic and matmul only.
+        Column ordering is NATURAL, with partial row pivoting.
+        """
+        lu = splu_python(kkt_matrix)
+        return lu.solve(-rhs)
+
+    def GradientSolver_sparse_natural(self, kkt_matrix, rhs):
+        """Compiled reference with natural ordering and no equilibration.
+
+        This reduces ordering/scaling differences from the Python LU,
+        but SuperLU still uses its own optimized factorization strategy.
+        The original GradientSolver_sparse retains its default settings.
+        """
+        lu = splu(sparse.csc_matrix(kkt_matrix), permc_spec='NATURAL',
+                  diag_pivot_thresh=1.0, options={'Equil': False})
+        return lu.solve(-rhs)
 
     # def GradientSolver_general(self, Xhat, matF, matG, matddLxx, matddLxp, matddLxw, matddLww, matddLwp, P0):
     #     """Run the original Kalman-filter recursions with shared stage work.

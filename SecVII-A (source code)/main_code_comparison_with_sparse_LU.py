@@ -35,7 +35,7 @@ Sys_para  = np.array([0.772,0.0025,0.0021,0.0043]) # updated by the author of Ne
 dt_sample = 0.0025
 uav       = Uav_Env.quadrotor(Sys_para, dt_sample)
 uav.model()
-horizon   = 100
+horizon   = 60
 # Learning rate
 lr_nn     = 1e-4
 
@@ -172,6 +172,9 @@ def Train(epsilon0, gmin0):
         Grad_time_kkt_assembly = []
         Grad_time_sparse_primal_first = []
         Grad_time_kkt_assembly_primal_first = []
+        Additional_lu_times = {
+            backend: {order: [] for order in ('interleaved', 'primal_first')}
+            for backend in ('superlu_natural', 'python')}
         Timing_dataset, Timing_sample, Timing_horizon = [], [], []
         n_start = 500
         for key in train_set:
@@ -269,17 +272,31 @@ def Train(epsilon0, gmin0):
                                     ('primal_first', uavNMHE.AssembleKKT_primal_first)]
                 if time_index % 2:
                     assembly_methods.reverse()
-                sparse_results = {}
+                # Assemble once per ordering and give every backend the exact
+                # same matrix/RHS. Total = measured assembly + measured fresh
+                # factorization/solve; no other backend's runtime is included.
+                solver_results = {backend: {} for backend in
+                                  ('superlu_default', 'superlu_natural', 'python')}
                 for order, assemble in assembly_methods:
                     start_time_sparse = TM.time()
                     matrix, rhs = assemble(M, matF, matG, matddLxx, matddLxp, matddLxw, matddLww, matddLwp, P0)
                     end_time_kkt_assembly = TM.time()
-                    gradient = uavNMHE.GradientSolver_sparse(matrix, rhs)
-                    end_time_sparse = TM.time()
                     assembly_ms = (end_time_kkt_assembly - start_time_sparse)*1000
-                    factor_solve_ms = (end_time_sparse - end_time_kkt_assembly)*1000
-                    total_ms = (end_time_sparse - start_time_sparse)*1000
-                    sparse_results[order] = (matrix, rhs, gradient, assembly_ms, factor_solve_ms, total_ms)
+                    lu_backends = [('superlu_default', uavNMHE.GradientSolver_sparse),
+                                   ('superlu_natural', uavNMHE.GradientSolver_sparse_natural),
+                                   ('python', uavNMHE.GradientSolver_sparse_python)]
+                    # Rotate the first backend to reduce systematic order bias.
+                    first_backend = time_index % len(lu_backends)
+                    lu_backends = lu_backends[first_backend:] + lu_backends[:first_backend]
+                    for backend, solve_gradient in lu_backends:
+                        start_time_lu = TM.time()
+                        gradient = solve_gradient(matrix, rhs)
+                        factor_solve_ms = (TM.time() - start_time_lu)*1000
+                        total_ms = assembly_ms + factor_solve_ms
+                        solver_results[backend][order] = (matrix, rhs, gradient, assembly_ms,
+                                                         factor_solve_ms, total_ms)
+
+                sparse_results = solver_results['superlu_default']
 
                 (kkt_matrix, kkt_rhs, gra_opt_sparse, kkt_assembly_time,
                  sparse_factor_solve_time, gradtime_sparse) = sparse_results['interleaved']
@@ -287,11 +304,17 @@ def Train(epsilon0, gmin0):
                  kkt_assembly_time_primal_first, sparse_factor_solve_time_primal_first,
                  gradtime_sparse_primal_first) = sparse_results['primal_first']
                 for order in ('interleaved', 'primal_first'):
-                    assembly_ms, factor_solve_ms, total_ms = sparse_results[order][3:]
-                    print("--- Sparse KKT [%s] (assembly + factorization + solve): %.2f ms ---" %
-                          (order, total_ms))
-                    print("--- KKT assembly [%s]: %.2f ms; LU factorization + solve: %.2f ms ---" %
-                          (order, assembly_ms, factor_solve_ms))
+                    for backend in ('superlu_default', 'superlu_natural', 'python'):
+                        assembly_ms, factor_solve_ms, total_ms = solver_results[backend][order][3:]
+                        solver_name = {'superlu_default': 'GradientSolver_sparse',
+                                       'superlu_natural': 'GradientSolver_sparse_natural',
+                                       'python': 'GradientSolver_sparse_python'}[backend]
+                        print("--- Sparse KKT [%s, %s] (assembly + factorization + solve): %.2f ms ---" %
+                              (order, solver_name, total_ms))
+                        print("--- KKT assembly [%s]: %.2f ms; %s LU factorization + solve: %.2f ms ---" %
+                              (order, assembly_ms, solver_name, factor_solve_ms))
+                        if backend != 'superlu_default':
+                            Additional_lu_times[backend][order].append(factor_solve_ms)
                 Grad_time_sparse += [gradtime_sparse]
                 Grad_time_kkt_assembly += [kkt_assembly_time]
                 Grad_time_sparse_primal_first += [gradtime_sparse_primal_first]
@@ -342,6 +365,19 @@ def Train(epsilon0, gmin0):
                 kkt_residual_primal_first = kkt_matrix_primal_first @ gra_opt_sparse_primal_first + kkt_rhs_primal_first
                 print("KKT residual [primal_first] (KKT @ gradient + RHS): max abs=%.3e" %
                       np.max(np.abs(kkt_residual_primal_first)))
+
+                # Validate both added backends outside all timing intervals.
+                # Full KKT trajectories include states, noises, and costates.
+                for backend in ('superlu_natural', 'python'):
+                    for order in ('interleaved', 'primal_first'):
+                        matrix, rhs, gradient = solver_results[backend][order][:3]
+                        reference = sparse_results[order][2]
+                        difference = gradient - reference
+                        residual = matrix @ gradient + rhs
+                        print("Gradient difference (%s - superlu_default) [%s], full trajectory: max abs=%.3e, norm=%.3e" %
+                              (backend, order, np.max(np.abs(difference)), LA.norm(difference)))
+                        print("KKT residual [%s, %s] (KKT @ gradient + RHS): max abs=%.3e" %
+                              (order, backend, np.max(np.abs(residual))))
 
                 # Update the gradient sequence
                 # Only GradientSolver_general supplies gradients for training.
@@ -411,23 +447,44 @@ def Train(epsilon0, gmin0):
             assembly_times = np.asarray(Grad_time_kkt_assembly)
             sparse_times_primal_first = np.asarray(Grad_time_sparse_primal_first)
             assembly_times_primal_first = np.asarray(Grad_time_kkt_assembly_primal_first)
-            # Take means of per-call durations, including each LU duration.
+            # These arrays come from timed calls to GradientSolver_sparse_python,
+            # independently of the timings measured for compiled SuperLU.
+            python_lu_times = np.asarray(Additional_lu_times['python']['interleaved'])
+            python_lu_times_primal_first = np.asarray(Additional_lu_times['python']['primal_first'])
+            sparse_times_python = assembly_times + python_lu_times
+            sparse_times_python_primal_first = assembly_times_primal_first + python_lu_times_primal_first
+
+            # Compute arithmetic means from the per-call elapsed durations.
             mean_time = float(np.mean(grad_times))
             mean_time_sparse = float(np.mean(sparse_times))
+            mean_time_sparse_primal_first = float(np.mean(sparse_times_primal_first))
+            mean_time_sparse_python = float(np.mean(sparse_times_python))
+            mean_time_sparse_python_primal_first = float(np.mean(sparse_times_python_primal_first))
+            mean_lu_time_sparse_python = float(np.mean(python_lu_times))
+            mean_lu_time_sparse_python_primal_first = float(np.mean(python_lu_times_primal_first))
             print('GradientSolver_general mean elapsed time [ms]=', format(mean_time, '.2f'))
             print('Sparse KKT [interleaved] total mean elapsed time [ms]=', format(mean_time_sparse, '.2f'))
             print('KKT assembly [interleaved] mean [ms]=', format(float(np.mean(assembly_times)), '.2f'))
             print('LU factorization + solve [interleaved] mean [ms]=', format(float(np.mean(sparse_times - assembly_times)), '.2f'))
-            mean_time_sparse_primal_first = float(np.mean(sparse_times_primal_first))
             print('Sparse KKT [primal_first] total mean elapsed time [ms]=', format(mean_time_sparse_primal_first, '.2f'))
             print('KKT assembly [primal_first] mean [ms]=', format(float(np.mean(assembly_times_primal_first)), '.2f'))
             print('LU factorization + solve [primal_first] mean [ms]=',
                   format(float(np.mean(sparse_times_primal_first - assembly_times_primal_first)), '.2f'))
-            print('mean paired assembly difference (primal_first - interleaved) [ms]=',
+            print('GradientSolver_sparse_python [interleaved] mean elapsed time (assembly + factorization + solve) [ms]=',
+                  format(mean_time_sparse_python, '.2f'))
+            print('GradientSolver_sparse_python [interleaved] mean elapsed time (factorization + solve) [ms]=',
+                  format(mean_lu_time_sparse_python, '.2f'))
+            print('GradientSolver_sparse_python [primal_first] mean elapsed time (assembly + factorization + solve) [ms]=',
+                  format(mean_time_sparse_python_primal_first, '.2f'))
+            print('GradientSolver_sparse_python [primal_first] mean elapsed time (factorization + solve) [ms]=',
+                  format(mean_lu_time_sparse_python_primal_first, '.2f'))
+            print('Mean paired assembly difference (primal_first - interleaved) [ms]=',
                   format(float(np.mean(assembly_times_primal_first - assembly_times)), '.2f'))
             for name, timings in [('GradientSolver_general', grad_times),
                                   ('Sparse KKT [interleaved]', sparse_times),
                                   ('Sparse KKT [primal_first]', sparse_times_primal_first),
+                                  ('GradientSolver_sparse_python [interleaved]', sparse_times_python),
+                                  ('GradientSolver_sparse_python [primal_first]', sparse_times_python_primal_first),
                                   ('KKT assembly [interleaved]', assembly_times),
                                   ('KKT assembly [primal_first]', assembly_times_primal_first)]:
                 print('%s timing distribution [ms]: count=%d, mean=%.2f, p95=%.2f, min=%.2f, max=%.2f' %
@@ -439,6 +496,30 @@ def Train(epsilon0, gmin0):
             np.save('trained_data/mean_gradtime_'+str(horizon), mean_time)
             np.save('trained_data/mean_gradtime_sparse_'+str(horizon), mean_time_sparse)
             np.save('trained_data/mean_gradtime_sparse_primal_first_'+str(horizon), mean_time_sparse_primal_first)
+            # Explicitly save the independently measured Python LU runtimes.
+            np.save('trained_data/mean_gradtime_sparse_python_'+str(horizon), mean_time_sparse_python)
+            np.save('trained_data/mean_gradtime_sparse_python_primal_first_'+str(horizon), mean_time_sparse_python_primal_first)
+            np.save('trained_data/mean_lutime_sparse_python_'+str(horizon), mean_lu_time_sparse_python)
+            np.save('trained_data/mean_lutime_sparse_python_primal_first_'+str(horizon), mean_lu_time_sparse_python_primal_first)
+            additional_traces = {}
+            for backend in ('superlu_natural', 'python'):
+                for order, assembly in [('interleaved', assembly_times),
+                                        ('primal_first', assembly_times_primal_first)]:
+                    lu_times = np.asarray(Additional_lu_times[backend][order])
+                    total_times = assembly + lu_times
+                    solver_name = ('GradientSolver_sparse_python' if backend == 'python'
+                                   else 'GradientSolver_sparse_natural')
+                    print('%s [%s] LU factorization + solve mean [ms]=%.2f; total mean [ms]=%.2f' %
+                          (solver_name, order, np.mean(lu_times), np.mean(total_times)))
+                    prefix = backend + '_' + order
+                    additional_traces[prefix + '_lu_ms'] = lu_times
+                    additional_traces[prefix + '_total_ms'] = total_times
+                    total_timing_path = 'trained_data/mean_gradtime_' + prefix + '_' + str(horizon) + '.npy'
+                    lu_timing_path = 'trained_data/mean_lutime_' + prefix + '_' + str(horizon) + '.npy'
+                    np.save(total_timing_path, float(np.mean(total_times)))
+                    np.save(lu_timing_path, float(np.mean(lu_times)))
+                    print('Saved %s [%s] mean runtimes [ms]: total=%s; factorization + solve=%s' %
+                          (solver_name, order, total_timing_path, lu_timing_path))
             timing_path = 'trained_data/gradient_timing_trace_'+str(horizon)+'.npz'
             np.savez(timing_path, general_ms=grad_times, sparse_total_ms=sparse_times,
                      assembly_ms=assembly_times, sparse_lu_ms=sparse_times - assembly_times,
@@ -446,7 +527,7 @@ def Train(epsilon0, gmin0):
                      assembly_primal_first_ms=assembly_times_primal_first,
                      sparse_lu_primal_first_ms=sparse_times_primal_first - assembly_times_primal_first,
                      dataset=np.asarray(Timing_dataset), sample=np.asarray(Timing_sample),
-                     horizon=np.asarray(Timing_horizon))
+                     horizon=np.asarray(Timing_horizon), **additional_traces)
             print('Saved raw timing trace:', timing_path)
         else:
             mean_loss = 1e2
