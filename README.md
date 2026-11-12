@@ -8,7 +8,7 @@ The ***Neural Moving Horizon Estimation (NeuroMHE)*** is an auto-tuning and adap
 Please find out more details in 
    * our paper "Neural Moving Horizon Estimation for Robust Flight Control," [IEEE Xplore](https://ieeexplore.ieee.org/document/10313083), [arXiv](https://arxiv.org/abs/2206.10397)
    * YouTube video: https://www.youtube.com/watch?v=L5SrVr5ha-k
-   * Additional supporting materials, including the correction and clarification, the analytical solution for continuous-time linear MHE, and the additional proof of Lemma 2, are available in the Discussion folder.
+   * Additional supporting materials, including the correction and clarification, the analytical solution for continuous-time linear MHE, and the additional proof of Lemma 2, are available in the Discussions folder.
 
 For learning estimation policy using the second-order trust-region method, kindly refer to our another respository https://github.com/BinghengNUS/TR-NeuroMHE
 
