@@ -5,7 +5,7 @@ Cox, H., 1964. On the estimation of state variables and parameters for noisy dyn
 
 Thank you
 
-Bingheng Wang 07-Jan-2024
+Bingheng Wang Jan-07-2024
 
 ## Complementary Material to the Proof of Lemma 2 in NeuroMHE
 
@@ -21,4 +21,4 @@ https://doi.org/10.5281/zenodo.24496526
 
 Thank you
 
-Bingheng Wang updated 24-Nov-2026
+Bingheng Wang updated Nov-24-2026
